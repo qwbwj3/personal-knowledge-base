@@ -27,10 +27,10 @@
 
 ```text
 请帮我安装个人知识库 Skill：
-https://github.com/qwbwj3/personal-knowledge-base-test
+https://github.com/qwbwj3/personal-knowledge-base
 
-使用 v1.2.0，固定提交：
-928578a8f98bc1e191c84894bdf533ca2d0ab4ae
+使用正式版本 v1.2.1。
+请检出该标签，核对并记录它对应的完整提交。
 
 请从 Git 仓库获取，阅读安装说明后完成安装。
 需要我授权或操作时，用普通语言告诉我。

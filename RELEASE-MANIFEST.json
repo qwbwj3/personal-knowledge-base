@@ -1,6 +1,6 @@
 {
   "schema": "personal-kb.release-inventory.v1",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "files": {
     ".gitattributes": {
       "sha256": "57a25c7bbdb6cbd7644d7dd9a686e524d55ffa9c293ba6c0eb5881a4b79ed9bd",
@@ -13,7 +13,7 @@
       "executable": false
     },
     "FINAL-ACCEPTANCE.md": {
-      "sha256": "e90ff4e0b812805202811b9b81571460e7ec2bc04d2e67cc0ec96e8094c45357",
+      "sha256": "b26c00eef6e70b742b00575fbc5d47de3361484c82c0ac5d7e049c7fa15813a1",
       "bytes": 3181,
       "executable": false
     },
@@ -23,18 +23,18 @@
       "executable": false
     },
     "PUBLICATION.md": {
-      "sha256": "332b822e9e4cbbf75c8f40679975cefbb7431f3e290f5eee42d993e47495478c",
-      "bytes": 2353,
+      "sha256": "266968963cb2ce9387e4b73bc3576ebed609efd642a9b0bebed1b7bcdcbeaca5",
+      "bytes": 1275,
       "executable": false
     },
     "README.md": {
-      "sha256": "6b4365df0aaa3f35063d56c4beb8b4010a41355fe3d6a7635788033a8bd36d8a",
-      "bytes": 5850,
+      "sha256": "f68612f2aff12e4bdee8e6b7c82f9e36e2cb4362c70d662c3226c7491ffc6582",
+      "bytes": 5865,
       "executable": false
     },
     "RELEASE-NOTES.md": {
-      "sha256": "695cd98757d5c125575150c0cb75b07afbf25af3215d1f113b83dc8ae11b28b3",
-      "bytes": 1438,
+      "sha256": "aba128899f14b6100d4b8c92ab8006e4659be7a8587e122e3f1cb79ccdc009b4",
+      "bytes": 1822,
       "executable": false
     },
     "SECURITY.md": {
@@ -48,7 +48,7 @@
       "executable": false
     },
     "skills/personal-knowledge-base/PACKAGE.json": {
-      "sha256": "73255680bccbcf2dbb71f08ca344401d3fdb0d5bdac2d7538d57cb911b5813fe",
+      "sha256": "af71d757beae2ebcee05441fb84f6e4b6b14fd0060f529601e971cc24209e03d",
       "bytes": 3356,
       "executable": false
     },
@@ -78,8 +78,8 @@
       "executable": false
     },
     "skills/personal-knowledge-base/references/installation-lifecycle.md": {
-      "sha256": "0f0e59bde81db776c6b4b485e0be4998b8d30682fb5b68989dc8c3117cb7a664",
-      "bytes": 13258,
+      "sha256": "0b816772ac8ad7e330c839294f19c27123b4903f91ce11cd270eb4408ec74ba5",
+      "bytes": 13744,
       "executable": false
     },
     "skills/personal-knowledge-base/references/obsidian-workflow.md": {
@@ -188,8 +188,8 @@
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/install_lifecycle.py": {
-      "sha256": "aaaf299b22111bfb8f1d7de00d69f4538b11f92d3f11237a7d35ee4fa9af1273",
-      "bytes": 44648,
+      "sha256": "583c1ade10b16636805a97c3ac3bef5b57460ddb960f6885296d9fb7d8af848d",
+      "bytes": 44845,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/install_workbuddy.py": {
@@ -593,7 +593,7 @@
       "executable": false
     },
     "skills/personal-knowledge-base/使用说明.md": {
-      "sha256": "d4baff0875973359cf09dffd43482d2a135091c53d4e2fe11637f66fff0ad760",
+      "sha256": "bfc7f92a1eda77e2939f5fbf427fe0d7327cdeac51fbc4aa4323712f95675bad",
       "bytes": 855,
       "executable": false
     },

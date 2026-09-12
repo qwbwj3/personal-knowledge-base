@@ -4,7 +4,7 @@
 
 ## 1. 可信拉取与隔离安装
 
-匿名完整克隆经确认的公开仓库，不浅克隆旧私有历史，不把ZIP改成伪造origin后安装。检出发布者给出的固定SHA，确认工作区干净，执行 `python -B tools/verify_release.py`。版本应为 `1.2.0`。
+匿名完整克隆经确认的公开仓库，不浅克隆旧私有历史，不把ZIP改成伪造origin后安装。检出发布者给出的固定SHA，确认工作区干净，执行 `python -B tools/verify_release.py`。版本应为 `1.2.1`。
 
 阅读Skill安装文档，使用一个**新的隔离安装目标**和实际将用于执行Skill的解释器，按正常安装器传入`--apply --target <新隔离目录> --expected-commit <完整SHA>`。记录真实active.commit、版本匹配和格式能力；pending不是成功。缺正常依赖按已有授权准备；不下载新模型替代健康OCR，不提权、不改宿主shim、不手改收据。
 

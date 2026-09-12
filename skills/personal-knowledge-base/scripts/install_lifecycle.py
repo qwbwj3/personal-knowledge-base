@@ -15,10 +15,13 @@ import time
 import uuid
 from installer_process import quiet_subprocess_kwargs
 
-ORIGINS = {'https://github.com/qwbwj3/personal-knowledge-base-test.git',
-           'https://github.com/qwbwj3/personal-knowledge-base-test',
-           'git@github.com:qwbwj3/personal-knowledge-base-test.git',
-           'ssh://git@github.com/qwbwj3/personal-knowledge-base-test.git'}
+ORIGINS = {'https://github.com/qwbwj3/personal-knowledge-base.git',
+           'https://github.com/qwbwj3/personal-knowledge-base',
+           'git@github.com:qwbwj3/personal-knowledge-base.git',
+           'ssh://git@github.com/qwbwj3/personal-knowledge-base.git'}
+# Old receipts remain readable; their commits must still be verified ancestors.
+# The old URL is NOT accepted as a source for new installation requests.
+RECEIPT_ORIGINS = ('qwbwj3/personal-knowledge-base', 'qwbwj3/personal-knowledge-base-test')
 PREFIX = 'skills/personal-knowledge-base'
 
 def activation_denied(exc):
@@ -132,7 +135,7 @@ class Anchor:
             refuse('unexpected_payload_location')
         origin = git(self.repo, 'remote', 'get-url', 'origin').decode().strip()
         if origin not in ORIGINS:
-            refuse('unauthorized_origin', '请从 qwbwj3/personal-knowledge-base-test 正常授权克隆；不接受本地路径或其他仓库作为origin。')
+            refuse('unauthorized_origin', '请从 qwbwj3/personal-knowledge-base 正常授权克隆；不接受本地路径或其他仓库作为origin。')
         self.commit = git(self.repo, 'rev-parse', 'HEAD').decode().strip()
         if expected and (not re.fullmatch('[0-9a-f]{40}', expected) or expected != self.commit):
             refuse('expected_commit_mismatch', '请切换到经用户确认的完整40位提交后再运行。')
@@ -294,7 +297,7 @@ class Lifecycle:
 
     def receipt(self, ident):
         value = read_json(self.version(ident) / 'receipt.json')
-        if not isinstance(value, dict) or value.get('id') != ident or value.get('origin') != 'qwbwj3/personal-knowledge-base-test':
+        if not isinstance(value, dict) or value.get('id') != ident or value.get('origin') not in RECEIPT_ORIGINS:
             refuse('invalid_receipt')
         self.anchor.manifest(value.get('commit'))
         return value
@@ -733,7 +736,7 @@ class Lifecycle:
     def prepare_receipt(self, commit):
         ident = uuid.uuid4().hex
         self.version(ident).mkdir()
-        write_json(self.version(ident) / 'receipt.json', {'schema': 'personal-kb.install.v2', 'id': ident, 'commit': commit, 'origin': 'qwbwj3/personal-knowledge-base-test'})
+        write_json(self.version(ident) / 'receipt.json', {'schema': 'personal-kb.install.v2', 'id': ident, 'commit': commit, 'origin': 'qwbwj3/personal-knowledge-base'})
         return ident
 
 def run_bounded(lifecycle, action, wait_seconds, *, progress=None, **kwargs):

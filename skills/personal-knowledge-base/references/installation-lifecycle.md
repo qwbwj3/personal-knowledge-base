@@ -2,7 +2,7 @@
 
 安装器验证代码来源与能力；代码安装完成不代表宿主自然发现、重新加载与真实资料使用已经通过最终验收。
 
-请把仓库链接交给宿主 Agent，让它通过正常 GitHub 授权克隆 `qwbwj3/personal-knowledge-base-test`，确认发布者给出的完整提交，阅读本页并执行安装。不要在聊天中粘贴令牌。缺少 Python 3 或 Git 时，由宿主通过正常授权准备；本安装器不执行 sudo、全局 pip 或修改宿主配置。
+请把仓库链接交给宿主 Agent，让它通过正常 GitHub 授权克隆 `qwbwj3/personal-knowledge-base`，确认发布者给出的完整提交，阅读本页并执行安装。不要在聊天中粘贴令牌。缺少 Python 3 或 Git 时，由宿主通过正常授权准备；本安装器不执行 sudo、全局 pip 或修改宿主配置。
 
 在**干净克隆根目录**执行（Windows 可将 `python3` 换为 `py -3`）：
 
@@ -88,3 +88,7 @@ Obsidian首次打开、路径和用户笔记保护见[浏览流程](obsidian-wor
 分离worker先在数秒内确认进程独立性，再执行可能较慢的Git完整校验；早期握手不授权安装。通过 `worker.progress_path` 读取 starting / verifying / waiting / activated / failed，`worker_finished` 指示本次等待已结束。Windows Git/Python安装子进程静默运行，错误保留日志，不弹反复控制台。等待采用有界退避；对已定位的目录移动拒绝先做轻量访问探测，仍被拒时不重复整库代码校验。探测通过后仍完整验证再切换。
 
 非移动步骤的PermissionError不会伪装成pending：回执 `error.operation/path/errno/winerror` 说明具体读文件、管理记录写入/发布等失败位置。应据此检查实际权限或安全软件，不笼统归因为宿主锁。300秒重试预算不包含完整验证的耗时；单次Git和能力探针各自有超时，不启动永久等待器。
+
+## 仓库正式名称（1.2.1）
+
+安装来源为 `https://github.com/qwbwj3/personal-knowledge-base`。已有干净发布克隆的 origin 若仍为旧名，先向发布者核对正式地址，再更新为新地址并获取 v1.2.1。新安装器可读取 1.2.0 的旧名称收据，但仍核验提交祖先关系和文件；不手改收据。旧私有开发历史不属于本公开仓库，不能借改名绕过安装来源检查。旧 v1.2.0 标签保持不变，新安装使用 v1.2.1。

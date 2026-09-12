@@ -1,7 +1,7 @@
 {
   "schema": "personal-kb.package.v1",
   "name": "personal-knowledge-base",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "host": "workbuddy",
   "workbuddy_skill_root": "~/.codebuddy/skills",
   "base": {
