@@ -1,0 +1,9 @@
+{
+  "model_id": "PP-OCRv6-small-onnx-rapidocr-3.9.2",
+  "source": "https://github.com/RapidAI/RapidOCR/blob/v3.9.2/python/rapidocr/default_models.yaml",
+  "models": {
+    "det": {"file": "PP-OCRv6_det_small.onnx", "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.9.2/onnx/PP-OCRv6/det/PP-OCRv6_det_small.onnx", "sha256": "090f04abcd9d9a7498bc4ebf677e4cb9bdce1fe4197ddb7e529f1ef44e1ff94f"},
+    "rec": {"file": "PP-OCRv6_rec_small.onnx", "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.9.2/onnx/PP-OCRv6/rec/PP-OCRv6_rec_small.onnx", "sha256": "6f327246b50388f3c176ae304bd95767ea6dc0c9ae92153ef8cbe210b3c14884"},
+    "cls": {"file": "ch_ppocr_mobile_v2.0_cls_mobile.onnx", "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.9.2/onnx/PP-OCRv4/cls/ch_ppocr_mobile_v2.0_cls_mobile.onnx", "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c"}
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "personal-kb.publication-audit.v1",
+  "version": "1.2.0",
+  "scope": "Current release payload only; not a certificate that the original repository history is safe to make public",
+  "payload_status": "checked",
+  "original_repository_publication_status": "blocked_pending_private_history_separation_and_admin_action",
+  "selection": "Runtime Skill allowlist plus generic release documentation and integrity tool; no archived development state",
+  "previous_tracked_file_count": 2471,
+  "selected_runtime_files": 114,
+  "first_party_python_files_unchanged": 39,
+  "changed_runtime_files": [
+    "skills/personal-knowledge-base/SKILL.md",
+    "skills/personal-knowledge-base/使用说明.md",
+    "skills/personal-knowledge-base/PACKAGE.json",
+    "skills/personal-knowledge-base/references/ocr-runtime.md",
+    "skills/personal-knowledge-base/references/source-trust.md",
+    "skills/personal-knowledge-base/references/visual-review.md",
+    "skills/personal-knowledge-base/references/installation-lifecycle.md",
+    "skills/personal-knowledge-base/references/obsidian-workflow.md",
+    "skills/personal-knowledge-base/references/classification.md"
+  ],
+  "excluded_categories": [
+    "business_documents",
+    "extracted_business_text",
+    "knowledge_bases",
+    "personal_notes",
+    "installation_receipts",
+    "local_runtime_configuration",
+    "conversation_exports",
+    "machine_test_reports",
+    "old_development_archives",
+    "private_workflows_and_actions_artifacts",
+    "model_payloads",
+    "virtual_environments"
+  ],
+  "retained_non_user_components": [
+    "empty upstream vault templates",
+    "upstream licenses and attribution",
+    "public dependency/model manifests",
+    "unchanged native PDF adapter"
+  ],
+  "secret_scan": {
+    "tool": "Gitleaks",
+    "version": "8.30.1",
+    "scope": "all files in current payload",
+    "rule_exceptions_added": false,
+    "findings": 0,
+    "live_credential_validation_performed": false
+  },
+  "privacy_review": {
+    "personal_identity_markers_remaining": 0,
+    "concrete_user_home_paths_remaining": 0,
+    "business_document_files_remaining": 0,
+    "generated_logs_or_databases_remaining": 0,
+    "credential_material_files_remaining": 0,
+    "binary_printable_strings_checked": true
+  },
+  "checks": {
+    "python_syntax_files": 68,
+    "packaging_regression_methods": 106,
+    "packaging_regression_passed": true,
+    "no_configuration_response": "needs_setup",
+    "no_configuration_exit": 3,
+    "no_configuration_writes": false
+  },
+  "inherited_windows_regression": {
+    "executions": 406,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "scope": "Synthetic Agent judgments and real maintenance paths; not final user-host acceptance"
+  },
+  "not_verified": [
+    "user_host_final_install_and_discovery",
+    "user_business_question_acceptance",
+    "complete_large_library_workflow",
+    "full_private_repository_history_erasure"
+  ],
+  "limitations": "Pattern scanning and review cannot guarantee detection of every secret or hidden encoding. Old repository content, remote caches and prior copies are not erased by this payload cleanup."
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "llm-wiki.vendored-upstream.v1",
+  "repository": "https://github.com/AgriciDaniel/claude-obsidian",
+  "commit": "1c1bc49c03a685ee8f5d09c99efe52b42d6673f5",
+  "release": "2.1.0",
+  "license": "MIT",
+  "vendored_components": [
+    "claude_obsidian",
+    "scripts",
+    "templates",
+    "config"
+  ],
+  "local_compatibility_patches": [
+    {
+      "id": "runtime-safe-delete-dir-fd-probe",
+      "reason": "Accept host safety wrappers for os.unlink/os.rmdir only after a confined functional dir_fd probe; do not disable or bypass the host safety layer.",
+      "files": [
+        "claude_obsidian/paths.py",
+        "claude_obsidian/transaction.py",
+        "claude_obsidian/legacy_lock.py"
+      ]
+    }
+  ]
+}

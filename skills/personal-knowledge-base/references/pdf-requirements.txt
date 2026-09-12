@@ -1,0 +1,2 @@
+# Validated primary text/structure reader; install in the Python used by the host.
+pypdf==6.10.0

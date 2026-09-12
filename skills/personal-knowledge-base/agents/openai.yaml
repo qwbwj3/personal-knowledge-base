@@ -1,0 +1,4 @@
+interface:
+  display_name: "个人知识库"
+  short_description: "结合本人的产品资料、业务经验和历史创作辅助写作、查询与审核"
+  default_prompt: "使用 $personal-knowledge-base；首次无配置时请与我交互选择本人资料目录、知识库名称及授权，不使用工程样例建库；已有库保留，只有我明确要求调用个人知识库时才读取，回答时区分产品事实、个人经验与个人表达并给出实际来源。"
