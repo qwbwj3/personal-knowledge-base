@@ -63,8 +63,8 @@
       "executable": false
     },
     "docs/RELEASE-1.3.0-ACCEPTANCE.md": {
-      "sha256": "723fd6764768da37780b04df84481419a175fdf057d92255c1cbb9571ccb6fb0",
-      "bytes": 2274,
+      "sha256": "432339be42f0cf977ea45198bed151c944cb93a87e0825235475da51c2de63f9",
+      "bytes": 2684,
       "executable": false
     },
     "skills/personal-knowledge-base/PACKAGE.json": {
@@ -223,8 +223,8 @@
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/install_lifecycle.py": {
-      "sha256": "583c1ade10b16636805a97c3ac3bef5b57460ddb960f6885296d9fb7d8af848d",
-      "bytes": 44845,
+      "sha256": "118ea171b77a07dc4f51faebcf0f3ad8538c04ff63ad25b6a73d88d0d49affae",
+      "bytes": 45097,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/install_workbuddy.py": {
@@ -268,8 +268,8 @@
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/ocr_runtime.py": {
-      "sha256": "a4122b1ed0a75bb633f74964cfa2d60226172427ccb568195e031ed7759867da",
-      "bytes": 18849,
+      "sha256": "d0cebd615aafc0d5678b54039be7744cb7f88268c9e97fd079ac5ac08d076cc6",
+      "bytes": 19255,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/ocr_worker.py": {
@@ -323,8 +323,8 @@
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/search_index.py": {
-      "sha256": "b4e1bb8e80915dbdda6e3afbf9340a2084ff153ce483909e148d312854c882b3",
-      "bytes": 13971,
+      "sha256": "e438884140b06569bf2cd8f88aeccd22a9fb31252af86bf7c60c30dab59e325b",
+      "bytes": 14198,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/semantic_review.py": {
@@ -680,6 +680,11 @@
     "tests/test_classification_materials.py": {
       "sha256": "d192abd1cc94f2ec263d2206594c10ae2c15de6496dbaa676fa0d8710bf4e956",
       "bytes": 4390,
+      "executable": false
+    },
+    "tests/test_host_mkdir_compatibility.py": {
+      "sha256": "1542147de4abe83203f1d59f064ab9e95b9c3be4db1714962bdd14a356288083",
+      "bytes": 5475,
       "executable": false
     },
     "tests/test_image_release.py": {

@@ -346,7 +346,13 @@ def prepare(home: Path) -> dict:
                        check=True, stdout=sys.stderr, env=env, timeout=900, **quiet_subprocess_kwargs())
         subprocess.run([str(_python(home)), '-m', 'pip', 'check'], check=True, stdout=sys.stderr, env=env, timeout=900, **quiet_subprocess_kwargs())
         _check_versions(home)
-        (home / 'models').mkdir(exist_ok=True)
+        models = home / 'models'
+        if models.is_symlink() or (hasattr(models, 'is_junction') and models.is_junction()):
+            raise RuntimeError('Model directory must not be a link or junction')
+        if not models.is_dir():
+            models.mkdir(exist_ok=True)
+        if models.is_symlink() or (hasattr(models, 'is_junction') and models.is_junction()):
+            raise RuntimeError('Model directory must not be a link or junction')
         for item in _spec()['models'].values():
             target = home / 'models' / item['file']
             if target.is_file() and _digest(target) == item['sha256']:
