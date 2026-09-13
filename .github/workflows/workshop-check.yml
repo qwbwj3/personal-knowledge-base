@@ -1,0 +1,34 @@
+name: Workshop regression
+on:
+  push:
+    branches: [fix/workshop-review-queue-20260913]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.13'
+      - name: Check public release and export source only
+        shell: python
+        run: |
+          import os, subprocess, zipfile
+          from pathlib import Path
+          subprocess.run(['python','-B','tools/verify_release.py'],check=True)
+          out=Path(os.environ['RUNNER_TEMP'])/'workshop-source.zip'
+          files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED) as z:
+              for name in files:
+                  if name and not name.startswith('.github/'):
+                      z.write(name,name)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: workshop-public-source
+          path: ${{ runner.temp }}/workshop-source.zip
+          retention-days: 1
