@@ -40,7 +40,18 @@ def prepare(path, output, expected_sha):
             if raw.format not in ('PNG','JPEG','WEBP') or getattr(raw,'n_frames',1)!=1:raise ValueError('unsupported_image_or_animation')
             grid(raw.width,raw.height)
             orientation=raw.getexif().get(274,1)
-            image=ImageOps.exif_transpose(raw).convert('RGB')
+            oriented=ImageOps.exif_transpose(raw)
+            try:
+                # Discarding alpha makes transparent black text disappear on a
+                # black background. Render document transparency on white.
+                if 'A' in oriented.getbands() or 'transparency' in oriented.info:
+                    rgba=oriented.convert('RGBA')
+                    try:
+                        image=Image.new('RGB',rgba.size,'white')
+                        image.paste(rgba,mask=rgba.getchannel('A'))
+                    finally:rgba.close()
+                else:image=oriented.convert('RGB')
+            finally:oriented.close()
         try:
             tiles=grid(image.width,image.height)
             overview=image.copy();overview.thumbnail((1280,1280));overview.save(output/'overview.png',compress_level=3);overview.close()
@@ -50,7 +61,7 @@ def prepare(path, output, expected_sha):
                 tile.update(file=name,sha256=file_hash(output/name),width=crop.width,height=crop.height)
                 crop.close()
             result={'schema':IMAGE_VERSION,'source_sha256':expected_sha,'width':image.width,'height':image.height,
-                    'source_orientation':orientation,'coordinates':'exif_oriented_original_pixels',
+                    'source_orientation':orientation,'coordinates':'exif_oriented_original_pixels','transparency_background':'white',
                     'overview':{'file':'overview.png','sha256':file_hash(output/'overview.png'),'purpose':'navigation_not_small_text_evidence'},
                     'tiles':tiles,'ocr_executed':False,'model_called':False,'downsampled_tiles':False}
         finally:image.close()

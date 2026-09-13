@@ -82,11 +82,18 @@ class Store:
         if source.suffix.lower() not in IMAGE_SUFFIXES:raise ValueError('image_format_required')
         sha=file_hash(source)
         ledger=self.ledger()
-        revoked_tasks={row.get('task_id') for key,row in ledger['images'].items() if key in ledger['revoked']}
+        active_tasks={row.get('task_id') for key,row in ledger['images'].items() if key not in ledger['revoked']}
+        revoked_tasks={row.get('task_id') for key,row in ledger['images'].items() if key in ledger['revoked']}-active_tasks
         for path in (self.root/'tasks').glob('*.json'):
-            prior=read(path)
+            try:prior=read(path)
+            except (OSError,ValueError):continue
             if prior.get('source_relative')==relative and prior.get('source_sha256')==sha and prior.get('schema')==IMAGE_VERSION and prior.get('task_id') not in revoked_tasks:
-                return self.packet(self.task(prior['task_id']))
+                try:prior=self.task(prior['task_id'])
+                except (OSError,ValueError,KeyError):
+                    # A missing/damaged derived packet must not strand the
+                    # authorized original. Keep the old files and render anew.
+                    continue
+                return self.packet(prior)
         out=self.root/'images'/uuid.uuid4().hex
         result=worker(self.root,{'action':'image','path':str(source),'output':str(out),'source_sha256':sha},timeout=90)
         self.source(relative,sha)
@@ -128,9 +135,17 @@ class Store:
         result.update(schema=IMAGE_VERSION,source_relative=task['source_relative'])
         identity=digest(result);ledger=self.ledger();ledger['images'][identity]=result
         if identity in ledger['revoked']:raise ValueError('revoked_result_requires_a_new_review')
+        # There is one current reading per original revision. Merely appending
+        # the correction leaves the previous extraction cache valid, and JSON
+        # object sorting cannot stand in for chronological result selection.
+        superseded={key for key,row in ledger['images'].items() if key!=identity
+                    and row.get('source_relative')==task['source_relative']
+                    and row.get('source_sha256')==task['source_sha256']}
+        ledger['revoked']=sorted(set(ledger['revoked'])|superseded)
         write(self.root/'ledger.json',ledger)
         return {'status':'image_result_ready','result_id':identity,'task_id':task['task_id'],
-                'next_action':'normal update','published':False,'source_documents':1}
+                'next_action':'normal update','published':False,'source_documents':1,
+                'superseded_results':len(superseded),'historical_originals_preserved':True}
 
     def extraction(self,path,sha):
         relative=safe(path).resolve(strict=True).relative_to(self.source_root).as_posix()
@@ -185,9 +200,9 @@ class Store:
         for row,expected in zip(rows,task['request']['outputs']):
             if not isinstance(row,dict) or set(row)!= {'sheet','cell','value'} or any(row[k]!=expected[k] for k in ('sheet','cell')):
                 raise ValueError('calculation_output_identity_mismatch')
-            cell=next(s for s in book['sheets'] if s['name']==expected['sheet'])['cells'].get(expected['cell'],{})
+            cell=workbook_material.range_read(book,expected['sheet'],expected['cell'])['rows'][0][0]
             if row['value'] is None and cell.get('formula'):raise ValueError('missing_formula_result_is_not_success')
-            if isinstance(row['value'],str) and row['value'].startswith('#'):raise ValueError('formula_error_is_not_calculation_success')
+            if isinstance(row['value'],str) and (row['value'] in ('#N/A','#NAME?','#GETTING_DATA') or (row['value'].startswith('#') and row['value'].endswith('!'))):raise ValueError('formula_error_is_not_calculation_success')
             if row['value'] is not None and type(row['value']) not in (str,int,float,bool):raise ValueError('invalid_calculated_value')
             if isinstance(row['value'],float) and not math.isfinite(row['value']):raise ValueError('nonfinite_calculated_value')
         saved={**result,'task_id':task['task_id'],'source_sha256':task['source_sha256'],'inputs':task['request']['inputs'],

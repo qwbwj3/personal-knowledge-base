@@ -1,1 +1,706 @@
-{"schema":"personal-kb.release-inventory.v1","version":"1.3.0-rc.1","files":{".gitattributes":{"sha256":"57a25c7bbdb6cbd7644d7dd9a686e524d55ffa9c293ba6c0eb5881a4b79ed9bd","bytes":153,"executable":false},".github/workflows/material-check.yml":{"sha256":"8c2888d4b0278069d6176590533ef6e7d3e56fad581e3f33fd4044009ad644d2","bytes":1462,"executable":false},".gitignore":{"sha256":"0762c5d27ceac20dc12201200e085942f08e0ece34faa3f2c496f722fe48aff5","bytes":361,"executable":false},"FINAL-ACCEPTANCE.md":{"sha256":"b26c00eef6e70b742b00575fbc5d47de3361484c82c0ac5d7e049c7fa15813a1","bytes":3181,"executable":false},"PUBLICATION-AUDIT.json":{"sha256":"88b5a7e0595950d9cf41a53b261bfd7dadfe07ace98dadf5056bdfd26c9d54b5","bytes":3137,"executable":false},"PUBLICATION.md":{"sha256":"266968963cb2ce9387e4b73bc3576ebed609efd642a9b0bebed1b7bcdcbeaca5","bytes":1275,"executable":false},"README.md":{"sha256":"6cee46dd59307788898adb437f1ecc1f00b70f0c40b775f6cf773aac9becffa7","bytes":6475,"executable":false},"RELEASE-NOTES.md":{"sha256":"aba128899f14b6100d4b8c92ab8006e4659be7a8587e122e3f1cb79ccdc009b4","bytes":1822,"executable":false},"SECURITY.md":{"sha256":"cd6efbee280b0ff45c6789135b093d368aeab999f4601f8daf7c80bf011c9ffe","bytes":1012,"executable":false},"THIRD-PARTY-NOTICES.md":{"sha256":"2aa0e8cb299b1140de8e94bf508d1f6e1b1645039029eef22852ce744df8260f","bytes":780,"executable":false},"docs/MULTIFORMAT-DEVELOPMENT.md":{"sha256":"b5c587659736c01b268b71af07ac6724af9fda450964a26167239818847b8463","bytes":10966,"executable":false},"docs/MULTIFORMAT-RESULTS.json":{"sha256":"cc9a4e8c087ea65a0c3819e3978f8023506fba198574f472ba2fbc9ec4cecaaf","bytes":6371,"executable":false},"skills/personal-knowledge-base/PACKAGE.json":{"sha256":"12d147b24875b9988a13fb2d8407e94e1ba66923e43ab90677abcdf3bc45abe4","bytes":3494,"executable":false},"skills/personal-knowledge-base/SKILL.md":{"sha256":"0c2c74a607c516fe271c489d37ef7c2352592172477fd94af8ba6515c7b39270","bytes":34006,"executable":false},"skills/personal-knowledge-base/agents/openai.yaml":{"sha256":"47d7cf44a41922f073c5d6e3839cd2be2ea79b43b6fa5d582bfca74e2308b6a3","bytes":484,"executable":false},"skills/personal-knowledge-base/bin/local-pdf-extract":{"sha256":"d25190971c9cfd0ebcf06337509dd6a83698aaa5c7135af51b6f351a0e975031","bytes":112320,"executable":true},"skills/personal-knowledge-base/references/chinese-graph.md":{"sha256":"218badd30c2080e4016eec63078e8b425b2afcefe504f762f42010c2e534e6a0","bytes":1618,"executable":false},"skills/personal-knowledge-base/references/classification.md":{"sha256":"64f9ec703a07f135d02cb21ad96a3e8ebf11ce9f0011c806cd30940198a7e627","bytes":7415,"executable":false},"skills/personal-knowledge-base/references/installation-lifecycle.md":{"sha256":"0b816772ac8ad7e330c839294f19c27123b4903f91ce11cd270eb4408ec74ba5","bytes":13744,"executable":false},"skills/personal-knowledge-base/references/materials.md":{"sha256":"4acd9c6c19309afc91286a6f1e3696d85cc962f51dc09286886458951032bdfc","bytes":8704,"executable":false},"skills/personal-knowledge-base/references/obsidian-workflow.md":{"sha256":"c09a9c18a7a46cfe09f9502e125ce8e63ed07fba61f2abebcb3648ed0ff66fab","bytes":9050,"executable":false},"skills/personal-knowledge-base/references/ocr-models.json":{"sha256":"9ef34ef98141810395212cde100ad995c79c41b5b5f8fed1ca5bf56eb1b2d981","bytes":927,"executable":false},"skills/personal-knowledge-base/references/ocr-requirements.lock":{"sha256":"68d9162a3f90fc0eaa2b74195d1c101a11cde7c2bc8d3d01466b840d65eaa577","bytes":538,"executable":false},"skills/personal-knowledge-base/references/ocr-runtime.md":{"sha256":"35accb2e03a572774c82a010203ed7cabeef4df13d90e1715b47bc780cecb228","bytes":8969,"executable":false},"skills/personal-knowledge-base/references/pdf-requirements.txt":{"sha256":"01f2a2024cc0bef8e2f8f6cf209347daee98f72200548728904045a3aa8dfea2","bytes":97,"executable":false},"skills/personal-knowledge-base/references/privacy-scope.md":{"sha256":"de1e144c7e1833b36efaaf93caf4e89424ca16c6e3bf9718ac6fdf0c5aa14196","bytes":1740,"executable":false},"skills/personal-knowledge-base/references/query-workflow.md":{"sha256":"f4df65c17642e84b214c43105cfd7f063710e94f129f635e3f518dfdb097c2cb","bytes":5096,"executable":false},"skills/personal-knowledge-base/references/review-host-handoff.md":{"sha256":"868bec00fe567995a08bdaa0331a032c4165d14a03ca392223eabf70bbf9ed12","bytes":2484,"executable":false},"skills/personal-knowledge-base/references/source-trust.md":{"sha256":"d9e4962269b1b7af3916e846d17ef6e33cb3747b72c405fe356d3f8d24ea1aa9","bytes":3753,"executable":false},"skills/personal-knowledge-base/references/visual-review.md":{"sha256":"8a13bf76cfd0ea96c2f9e1fcc523a2268f5ec587731fc1eea1ef51b2b023a7ec","bytes":7205,"executable":false},"skills/personal-knowledge-base/scripts/apply_chinese_graph.py":{"sha256":"31a0c44ef99e25d7b6a8cf2bf32eccb8c4a53e847ce7f0a151d590fa9370bdf8","bytes":17169,"executable":true},"skills/personal-knowledge-base/scripts/build_or_update.py":{"sha256":"44654746051d22324dde534dd6413b6a0e304b173f8cf2f06d71a9432f61dfac","bytes":9432,"executable":true},"skills/personal-knowledge-base/scripts/classification_flow.py":{"sha256":"c30d1e8b3f29cf8bbfc898108479aee9456456c5cb1e94cd01a124b83e4649f3","bytes":24121,"executable":false},"skills/personal-knowledge-base/scripts/configure_scope.py":{"sha256":"a2350d6a6951b639a489b1685a2da8fb9db89f81b58c387877e92e9e8baed4bd","bytes":4652,"executable":true},"skills/personal-knowledge-base/scripts/discovery.py":{"sha256":"3eb37b6cab1fe51c940b8951861b9ed4640b7fdd9222e4ee7dc60441c3bb5066","bytes":26078,"executable":false},"skills/personal-knowledge-base/scripts/export_graph_context.py":{"sha256":"d10e677994a69ec8034cfdda93ba68e670f958239347e94803c9dda5ca995e9a","bytes":5996,"executable":true},"skills/personal-knowledge-base/scripts/extraction_cache.py":{"sha256":"3ea29f053cfa5d4ed872b3788d743e8801d7f5f1a5b2ad331a3405ae908dc65e","bytes":1912,"executable":false},"skills/personal-knowledge-base/scripts/generation_materials.py":{"sha256":"898c8e985f9246c6de604615c332aab6c5caa0f09c8814c3c36212ca9eff91a6","bytes":5882,"executable":false},"skills/personal-knowledge-base/scripts/image_material.py":{"sha256":"4a0e5cde04cf150f31fcc31b5815598e33be2a6fd7419c9452a58b651e0a2d22","bytes":9081,"executable":false},"skills/personal-knowledge-base/scripts/import_checkpoint.py":{"sha256":"64136a71c5ce0e5d1004ebda6a24c77e70636b28f00625f7d7f170a44f4c3791","bytes":2184,"executable":false},"skills/personal-knowledge-base/scripts/import_progress.py":{"sha256":"68c2a4b39132476b010556d4e255c2ee722e81ddfac9e87a758ef33188e68ce5","bytes":2195,"executable":false},"skills/personal-knowledge-base/scripts/install_detached.py":{"sha256":"04939e617ef880fed15db5e27320c67d2cd59f7401fbad358863e5a1cdbe0b45","bytes":8661,"executable":false},"skills/personal-knowledge-base/scripts/install_lifecycle.py":{"sha256":"583c1ade10b16636805a97c3ac3bef5b57460ddb960f6885296d9fb7d8af848d","bytes":44845,"executable":false},"skills/personal-knowledge-base/scripts/install_workbuddy.py":{"sha256":"6d4116fe1c118022869cfb85e5c9665f73558f2e5fcad4f78c3843428c013fad","bytes":265,"executable":true},"skills/personal-knowledge-base/scripts/installer_process.py":{"sha256":"e159c7c7363b5eae028f4022b1d9cf0fa9cd02cd98af7088fe888a7c6198b4fa","bytes":454,"executable":false},"skills/personal-knowledge-base/scripts/kb_contracts.py":{"sha256":"3b9ead2b17109b40b539559f9e57deed6f344a882d0e48d386f5706cd3eb0b57","bytes":30023,"executable":true},"skills/personal-knowledge-base/scripts/material_common.py":{"sha256":"05c1efc268b73688534a3667a94a229d5009c95f531e9d86db05c668a519b076","bytes":2342,"executable":false},"skills/personal-knowledge-base/scripts/material_flow.py":{"sha256":"c59d812ee6069d893399317a3fb096785353ed2f8feb6ba69ad0ff1f91b063d4","bytes":20559,"executable":false},"skills/personal-knowledge-base/scripts/material_worker.py":{"sha256":"f9c93bf1d31bb9e53e95fc5d0f7cc25cd217ece37fa462766df0e9434cab9e72","bytes":4091,"executable":false},"skills/personal-knowledge-base/scripts/obsidian_view.py":{"sha256":"ca057417092c20b32cb992431d78c42b9dbff7c7d5edbab00add90d63e41bbb1","bytes":26750,"executable":false},"skills/personal-knowledge-base/scripts/ocr_decorations.py":{"sha256":"623f016f15934a0048ba63127d631270fbd702bfa964d504c2f10748ebc61347","bytes":21386,"executable":false},"skills/personal-knowledge-base/scripts/ocr_runtime.py":{"sha256":"214ad028d3a14eb0b9c0a9ad3076747d7a05b4c5ae8d11b0e354ffd494de04be","bytes":17984,"executable":false},"skills/personal-knowledge-base/scripts/ocr_worker.py":{"sha256":"8d8a8377c464ea2c2ed8f47980caae5e83e054f505e008528116087074d4e78a","bytes":9191,"executable":false},"skills/personal-knowledge-base/scripts/operation_guard.py":{"sha256":"5bf1aa8003dbc93d81e487799546c7c3636aad64205611395e7e6f7231e4ece4","bytes":7099,"executable":false},"skills/personal-knowledge-base/scripts/owned_process.py":{"sha256":"c08d79e632a62b0de0dbac950c99b03fd0cbb37331fe786e06e2df768cf6fe17","bytes":19319,"executable":false},"skills/personal-knowledge-base/scripts/pdf_pipeline.py":{"sha256":"5de080465a2b7bf90084c25ee9eacd703d1ede55f1145cdf2cf79aa9761d3732","bytes":25742,"executable":false},"skills/personal-knowledge-base/scripts/personal_kb.py":{"sha256":"fb0dd193dde5f65b12040f8dd5beaef59362e4e28967292a17bdc1c57fbcbf7a","bytes":180091,"executable":true},"skills/personal-knowledge-base/scripts/process_metrics.py":{"sha256":"7d8cc92171b735cd20c0e4aa36cec1c182063a6ea0669860f55f9ee6e0bb4161","bytes":2218,"executable":false},"skills/personal-knowledge-base/scripts/query_vault.py":{"sha256":"c12843a7887ec07d97a53393c7688958bf80c302e588e637d42c0a807441228c","bytes":28867,"executable":true},"skills/personal-knowledge-base/scripts/retrieve_task.py":{"sha256":"09922325a42258206cdfd7a0e559066fe067a6c9dd546ee6a4145932ffcb44c3","bytes":19987,"executable":true},"skills/personal-knowledge-base/scripts/review_paging.py":{"sha256":"7583c29eb2e8f25c61e65ab8d0a62f97e6a26eb7aab2e73f89a24ff63e058ee1","bytes":3350,"executable":false},"skills/personal-knowledge-base/scripts/review_protocol.py":{"sha256":"789832d02eca62ad57b8a2ea24b9e2a664c660f90d66953c1a8a3e9353889d5f","bytes":54648,"executable":false},"skills/personal-knowledge-base/scripts/search_index.py":{"sha256":"b4e1bb8e80915dbdda6e3afbf9340a2084ff153ce483909e148d312854c882b3","bytes":13971,"executable":false},"skills/personal-knowledge-base/scripts/semantic_review.py":{"sha256":"5a3354e66a4805dbe2372de65af94aa848aaade5f3beaf63c1cbbde6daa91bf6","bytes":2729,"executable":false},"skills/personal-knowledge-base/scripts/setup_boundary.py":{"sha256":"60bdeb9c89c70d340611bc247d10f2575096c430b9434ed01e2e5f763d0787cd","bytes":2257,"executable":false},"skills/personal-knowledge-base/scripts/snapshot_storage.py":{"sha256":"cd62c654a3390aa9e0fab37fb76705955cdbfe8e0aed05cb106338a6636d2509","bytes":1061,"executable":false},"skills/personal-knowledge-base/scripts/source_policy.py":{"sha256":"c638f1a6522b856fe14a158b4f5519e9e87fe6d9c42a636c5c204e5f85d4a5db","bytes":2054,"executable":false},"skills/personal-knowledge-base/scripts/source_provenance.py":{"sha256":"c56961b6e86ebc6590110bccdb857e286c5225bc4a2672ec4703cf6233e6301d","bytes":6239,"executable":false},"skills/personal-knowledge-base/scripts/start_vault.py":{"sha256":"e1462241b849b31af3f54fc77e268d59c0b58801dad7b5947e51dae0a542bfd8","bytes":43920,"executable":true},"skills/personal-knowledge-base/scripts/user_feedback.py":{"sha256":"e524971bf9c1f83335530dfd3e36f4e63f39221846f9b4fa5cf02f53f11582e2","bytes":7701,"executable":false},"skills/personal-knowledge-base/scripts/visual_review.py":{"sha256":"06342e3f2d3f0bdd9a71653c54eaaad6a6b56cc7ad843c6653c7e462460d0edc","bytes":27849,"executable":false},"skills/personal-knowledge-base/scripts/visual_review_worker.py":{"sha256":"ca27751d91e92fc72939c7f400a4fb4cc7f8bdf41137423bc3a8fda228d86f46","bytes":3094,"executable":false},"skills/personal-knowledge-base/scripts/workbook_material.py":{"sha256":"cc0c1982e24a3f9221acd1da200968ddb4ac1dbf9e2316e12eb540f63b67285b","bytes":16961,"executable":false},"skills/personal-knowledge-base/scripts/workspace_guard.py":{"sha256":"db5d2e955ec3fd30733f5cfbddc68f3b5cd7ea82852aae083ed953561052f6a1","bytes":8383,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/ATTRIBUTION.md":{"sha256":"8c24b56cea5e32d640edb0ac3919b0cd240505f5c5980fb8cc4cc59078363f8c","bytes":2188,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/LICENSE":{"sha256":"1c5915b8cde3e16949e40961353e483d44a65f90fae72405465dcff60118e57f","bytes":1088,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/PRIVACY.md":{"sha256":"0d7ca4c0c293413115d7db08eed97cf318cdf1a322c1d12bebb1a38ec8747f99","bytes":2588,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/README.md":{"sha256":"434419b1a342431e1893b6fd81739b34db2c02727c52799f7fb05d578b48de70","bytes":16804,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/RELEASE_MANIFEST.json":{"sha256":"ffeb3299e106797d84ca39323f1af41e68b23522d810097e294a704160d469ce","bytes":37692,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/UPSTREAM.json":{"sha256":"cee2ebecf000ba3fdb787aa92fb0c5885b464807e7d994bb190925843a45c816","bytes":722,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/__init__.py":{"sha256":"04085f7c054ce338249708fc8230d8da510250ddc04e3b3baef17293d1205d67","bytes":296,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/__main__.py":{"sha256":"9573278a10fd58f03b8d2480311533fb9d8ceec8e0ec13ce414b811d27c78c04","bytes":85,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/capture.py":{"sha256":"9fded207710e1e9b2fb60c6616b0675338b5eeaa1959f4ad972faec3c1ebd891","bytes":83828,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/checkpoint.py":{"sha256":"12fb1522321cddc72e2fe2123f56010a1c81ff0a0ec91b8659c2451a566a3e85","bytes":50166,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/cli.py":{"sha256":"38703e6db742f1c76ba6f8cce797b8ecf69a7cdf2ff1f9c739df60acab7e973a","bytes":44772,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/contracts.py":{"sha256":"995baf1ce86fc2b2ad426523bd142ef0853f6a41841dcd0e557c463cc8e9025c","bytes":49622,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/extensions.py":{"sha256":"846ef977af9d8029fdde3c7024159b3e8c35e3bd6c5fba020173726009bb5ee9","bytes":2679,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/gates.py":{"sha256":"d36cf301e5c4bbd40e5f225abd9cfa8f2071e59ef918a8a9d119ad4a8932b974","bytes":5014,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/hook_adapter.py":{"sha256":"79a3824641fd146a8960b57ca74bc4cd7fa29688f8928cdcd0e6ecbce5b35743","bytes":11886,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/json_utils.py":{"sha256":"31143eebb4e9d22de3159753a368a71ef2a15f3c84177e0507a29885ac1d31f1","bytes":1105,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/ledgers.py":{"sha256":"32cec2e5cc9846badbc4749e1e088988291c5d3a9db9abd2648de15213d4a038","bytes":52285,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/legacy_lock.py":{"sha256":"381b81253ae495ea4442fb1e7c651e74a80d6bc55e8141b353ff32e3c68dcf31","bytes":24517,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/lint_engine.py":{"sha256":"775cecd84170774fc3bf2f95a61c8b68df30e870baf863b4ac054b08587b94c3","bytes":44602,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/mode_config.py":{"sha256":"0dfa01bfcf52e55bcc50f5f7bbc4b2c2cc945f333cb5847b933da9c2a2579cbb","bytes":2800,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/package_validation.py":{"sha256":"963a54659a961de4e9791dd9abaffa9ede7a9e490a48bccadb5f4122cdd731ef","bytes":20819,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/paths.py":{"sha256":"819341f8b0a7bcd7bbe1741b13ea7ca8730e7d94f75371baf7071ff4bf45fca8","bytes":17096,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/release.py":{"sha256":"a99e4f09821caba7ccfd1f4cc564d7270447db47d3d1938f0d725786f1f49f87","bytes":90792,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/transaction.py":{"sha256":"3d2e65c34307ab54ca687045906852286b78f5182ac760332a0938fdabcb76ca","bytes":176281,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/url_safety.py":{"sha256":"d32b74164daa1bc735cc9a96b2cce07a5e3aa08209e4bdd2328dc6b8ef761d6b","bytes":2402,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/vault_ops.py":{"sha256":"ced9fc0cffb5f24a7772ec649cc09aaeca693725e17e2b66345572a1769e4ec9","bytes":4812,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/config/adapters.json":{"sha256":"edbaa57d35216b18ed33b6f1ded542cef851bac6271af5e58779a4f62df67af9","bytes":2803,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/config/capabilities.json":{"sha256":"9a372c18db93608f7112e8956f8dbb520c266e537b3794dee14b7436de3bc246","bytes":17496,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/config/product-contract.json":{"sha256":"b4455ef26fb0b8a1c327220d4156a13afe0dd3aa619d98ff2ed4eda44eae5ccd","bytes":6716,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/config/public-marketplace.json":{"sha256":"43af05abd417b29546718cf5bc34a7d1ad61e315e720ba333bb58fac1d661d67","bytes":841,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/config/release-allowlist.json":{"sha256":"2f09ac8a89734c39c0023ce5b09bb028a3f46cdc97f49af99bcd0af6749ff88c","bytes":2054,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/scripts/allocate-address.sh":{"sha256":"999ffab114d8584bacde49d36c10858a4e86784f84952e3056a150835618f03c","bytes":3139,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/scripts/bm25-index.py":{"sha256":"6d9a2d9fc6b9dd08061ed6606b7dbff60715de5e128e987581a722293bb61289","bytes":31693,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/scripts/boundary-score.py":{"sha256":"b1537782b93bc1a3dac64e8a097e786abd01b752af173a26acabdc7975edcd3c","bytes":12627,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/scripts/claude-obsidian.py":{"sha256":"34f3030da4a0ebc223a5dfba7f7180638d08dffa3d044be33fa72234866900c2","bytes":357,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/scripts/contextual-prefix.py":{"sha256":"2c0244bbe0a33f694f47c7e97933e285c2e3ed97001a7ae95eff5e3b27872f65","bytes":37586,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/scripts/detect-transport.sh":{"sha256":"5cee4d29099701a081d262f90de0c0c68e57b2fbbb058a47527e09a92293e663","bytes":17194,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/scripts/rerank.py":{"sha256":"744043d5a3b975237181e3c7273e733b42a3f82774f7f2e3f05ece6a5cc4beaf","bytes":19960,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/scripts/retrieve.py":{"sha256":"4ff0584c351239c63da5eb8324ac81279b5d90471629a5a77b4f5f4cfb4251fd","bytes":13936,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/scripts/tiling-check.py":{"sha256":"8f184015be341950e989df6f149513a67a844996eefad0e8083ebe33ca57ceec","bytes":20328,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/scripts/wiki-lock.sh":{"sha256":"3bfc9bd31dea36e60855877de12fcbd7a20ac79ea229a5d6a4fd1a681f840d02","bytes":793,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/scripts/wiki-mode.py":{"sha256":"f3c990d4ea2a8bec9752ed1474903532eac4a662af7c6e9f16927260596e12a5","bytes":14345,"executable":true},"skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.gitignore":{"sha256":"0d62dd96ce7a511d2f0154b6373b7a0bfc74b7985c2342af9357751b9fba42dd","bytes":351,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.obsidian/app.json":{"sha256":"b8c736f8900e4d28ead438125440572f32f5a475dd094ba7155b0879dc253c4b","bytes":65,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.obsidian/appearance.json":{"sha256":"d0bd766999b3bb8d45bdb5997916d82c51123c295599ff6a5db39ba40618bd7a","bytes":53,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.obsidian/graph.json":{"sha256":"574d00b8e5c2e16724678023c50a85e727af9067839f8612c55958e525f90c99","bytes":101,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.obsidian/snippets/vault-colors.css":{"sha256":"908fd97fabd94e989cc979605bb7b17b4da33c409e4846fd701780aea53107fd","bytes":620,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.raw/.manifest.json":{"sha256":"3061feca9f7973930654de66ebf3bb0959e23783f0129ce899634c91e2c050fb","bytes":132,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/inbox/.gitkeep":{"sha256":"01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b","bytes":1,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/wiki/hot.md":{"sha256":"111cfcce3e5f72d9475cf675528112741703ee82d7f8508ec520f38f5ea2378d","bytes":398,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/wiki/index.md":{"sha256":"cf768cf5e8af8118c2e3b4ab1ec3e8466b6c4a12a8800ec8bc5649f45ef634b6","bytes":374,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/wiki/log.md":{"sha256":"1f8415ce27cf5320306aebe19eba0810503270187841d2b287a802d80eb429e6","bytes":187,"executable":false},"skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/wiki/overview.md":{"sha256":"f6d4c76ec687b0124397280089d004226c530a127f33de31c77feb1d2c784b23","bytes":226,"executable":false},"skills/personal-knowledge-base/使用说明.md":{"sha256":"bfc7f92a1eda77e2939f5fbf427fe0d7327cdeac51fbc4aa4323712f95675bad","bytes":855,"executable":false},"skills/personal-knowledge-base/安装到WorkBuddy.bat":{"sha256":"dd10cb79699a72ee8b6cee646ca6b4b72c27c49cadc3760c50617473794960aa","bytes":255,"executable":false},"skills/personal-knowledge-base/安装到WorkBuddy.command":{"sha256":"e2c3c2ec2d492176fd08ad7b48d17e9c1a66115a5098e7b3ee225372d3ef2c8f","bytes":258,"executable":true},"skills/personal-knowledge-base/检查WorkBuddy安装.bat":{"sha256":"044d44cbd2d61be4f7ae838bbe76a7deb0f6412484936733cf41f3bebcf60d7e","bytes":255,"executable":false},"skills/personal-knowledge-base/检查WorkBuddy安装.command":{"sha256":"94fb443e4b20dac05298a80d9e5aec538c51c257b9ee9a8b290b91ce9a6f3322","bytes":258,"executable":true},"tests/test_multiformat.py":{"sha256":"d89bc4699aef264e0a17d219168c9b20062abd2d9fcc31faa1204ea9dee7a51d","bytes":23821,"executable":false},"tools/verify_release.py":{"sha256":"1f709c47fdf5d076274ddd4e29d7dd25262d5b51dff1cf59baa49d6ea80d15d3","bytes":3530,"executable":false}}}
+{
+  "schema": "personal-kb.release-inventory.v1",
+  "version": "1.3.0-rc.2",
+  "files": {
+    ".gitattributes": {
+      "sha256": "57a25c7bbdb6cbd7644d7dd9a686e524d55ffa9c293ba6c0eb5881a4b79ed9bd",
+      "bytes": 153,
+      "executable": false
+    },
+    ".github/workflows/material-check.yml": {
+      "sha256": "8c2888d4b0278069d6176590533ef6e7d3e56fad581e3f33fd4044009ad644d2",
+      "bytes": 1462,
+      "executable": false
+    },
+    ".github/workflows/workshop-check.yml": {
+      "sha256": "a4882bb505e63afdb5487de187a5c9593c9985b56769dd94e3a2c496139ae3a9",
+      "bytes": 1100,
+      "executable": false
+    },
+    ".gitignore": {
+      "sha256": "0762c5d27ceac20dc12201200e085942f08e0ece34faa3f2c496f722fe48aff5",
+      "bytes": 361,
+      "executable": false
+    },
+    "FINAL-ACCEPTANCE.md": {
+      "sha256": "b26c00eef6e70b742b00575fbc5d47de3361484c82c0ac5d7e049c7fa15813a1",
+      "bytes": 3181,
+      "executable": false
+    },
+    "PUBLICATION-AUDIT.json": {
+      "sha256": "88b5a7e0595950d9cf41a53b261bfd7dadfe07ace98dadf5056bdfd26c9d54b5",
+      "bytes": 3137,
+      "executable": false
+    },
+    "PUBLICATION.md": {
+      "sha256": "266968963cb2ce9387e4b73bc3576ebed609efd642a9b0bebed1b7bcdcbeaca5",
+      "bytes": 1275,
+      "executable": false
+    },
+    "README.md": {
+      "sha256": "84c34eafb11ebef3c669145c4067562bf2a61a233db7f936c84362f312ba7424",
+      "bytes": 7549,
+      "executable": false
+    },
+    "RELEASE-NOTES.md": {
+      "sha256": "ac222b06a2971bf936cbbd77ae0178d492f546c2557fcfde49edbffcf025a232",
+      "bytes": 2604,
+      "executable": false
+    },
+    "SECURITY.md": {
+      "sha256": "cd6efbee280b0ff45c6789135b093d368aeab999f4601f8daf7c80bf011c9ffe",
+      "bytes": 1012,
+      "executable": false
+    },
+    "THIRD-PARTY-NOTICES.md": {
+      "sha256": "2aa0e8cb299b1140de8e94bf508d1f6e1b1645039029eef22852ce744df8260f",
+      "bytes": 780,
+      "executable": false
+    },
+    "docs/MULTIFORMAT-DEVELOPMENT.md": {
+      "sha256": "b5c587659736c01b268b71af07ac6724af9fda450964a26167239818847b8463",
+      "bytes": 10966,
+      "executable": false
+    },
+    "docs/MULTIFORMAT-RESULTS.json": {
+      "sha256": "cc9a4e8c087ea65a0c3819e3978f8023506fba198574f472ba2fbc9ec4cecaaf",
+      "bytes": 6371,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/PACKAGE.json": {
+      "sha256": "879c3836373dde39de8ce3caa33961170d5ba48f448b98acbb86aa2be090f318",
+      "bytes": 3633,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/SKILL.md": {
+      "sha256": "d78895b39ed8dc88e9679fcd0f0ae82495b6086bfbe1133f30a98eb6e1b48de8",
+      "bytes": 35911,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/agents/openai.yaml": {
+      "sha256": "47d7cf44a41922f073c5d6e3839cd2be2ea79b43b6fa5d582bfca74e2308b6a3",
+      "bytes": 484,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/bin/local-pdf-extract": {
+      "sha256": "d25190971c9cfd0ebcf06337509dd6a83698aaa5c7135af51b6f351a0e975031",
+      "bytes": 112320,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/references/chinese-graph.md": {
+      "sha256": "218badd30c2080e4016eec63078e8b425b2afcefe504f762f42010c2e534e6a0",
+      "bytes": 1618,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/classification.md": {
+      "sha256": "64f9ec703a07f135d02cb21ad96a3e8ebf11ce9f0011c806cd30940198a7e627",
+      "bytes": 7415,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/installation-lifecycle.md": {
+      "sha256": "0b816772ac8ad7e330c839294f19c27123b4903f91ce11cd270eb4408ec74ba5",
+      "bytes": 13744,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/materials.md": {
+      "sha256": "4acd9c6c19309afc91286a6f1e3696d85cc962f51dc09286886458951032bdfc",
+      "bytes": 8704,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/obsidian-workflow.md": {
+      "sha256": "c09a9c18a7a46cfe09f9502e125ce8e63ed07fba61f2abebcb3648ed0ff66fab",
+      "bytes": 9050,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/ocr-models.json": {
+      "sha256": "9ef34ef98141810395212cde100ad995c79c41b5b5f8fed1ca5bf56eb1b2d981",
+      "bytes": 927,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/ocr-requirements.lock": {
+      "sha256": "68d9162a3f90fc0eaa2b74195d1c101a11cde7c2bc8d3d01466b840d65eaa577",
+      "bytes": 538,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/ocr-runtime.md": {
+      "sha256": "35accb2e03a572774c82a010203ed7cabeef4df13d90e1715b47bc780cecb228",
+      "bytes": 8969,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/pdf-requirements.txt": {
+      "sha256": "01f2a2024cc0bef8e2f8f6cf209347daee98f72200548728904045a3aa8dfea2",
+      "bytes": 97,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/privacy-scope.md": {
+      "sha256": "de1e144c7e1833b36efaaf93caf4e89424ca16c6e3bf9718ac6fdf0c5aa14196",
+      "bytes": 1740,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/query-workflow.md": {
+      "sha256": "f4df65c17642e84b214c43105cfd7f063710e94f129f635e3f518dfdb097c2cb",
+      "bytes": 5096,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/review-host-handoff.md": {
+      "sha256": "868bec00fe567995a08bdaa0331a032c4165d14a03ca392223eabf70bbf9ed12",
+      "bytes": 2484,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/source-trust.md": {
+      "sha256": "d9e4962269b1b7af3916e846d17ef6e33cb3747b72c405fe356d3f8d24ea1aa9",
+      "bytes": 3753,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/supported-formats.md": {
+      "sha256": "b4bd263bd8cac79544066d236f9578c33cbf3c74c70d6ed29a8e836689ab17ec",
+      "bytes": 2698,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/visual-review.md": {
+      "sha256": "231cace9a626c1e80a2f0f6325e958ac31e5d5645e4b49967ce0ce0eaa2299ea",
+      "bytes": 9380,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/apply_chinese_graph.py": {
+      "sha256": "31a0c44ef99e25d7b6a8cf2bf32eccb8c4a53e847ce7f0a151d590fa9370bdf8",
+      "bytes": 17169,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/scripts/build_or_update.py": {
+      "sha256": "44654746051d22324dde534dd6413b6a0e304b173f8cf2f06d71a9432f61dfac",
+      "bytes": 9432,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/scripts/classification_flow.py": {
+      "sha256": "c30d1e8b3f29cf8bbfc898108479aee9456456c5cb1e94cd01a124b83e4649f3",
+      "bytes": 24121,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/configure_scope.py": {
+      "sha256": "a2350d6a6951b639a489b1685a2da8fb9db89f81b58c387877e92e9e8baed4bd",
+      "bytes": 4652,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/scripts/discovery.py": {
+      "sha256": "3eb37b6cab1fe51c940b8951861b9ed4640b7fdd9222e4ee7dc60441c3bb5066",
+      "bytes": 26078,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/export_graph_context.py": {
+      "sha256": "d10e677994a69ec8034cfdda93ba68e670f958239347e94803c9dda5ca995e9a",
+      "bytes": 5996,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/scripts/extraction_cache.py": {
+      "sha256": "3ea29f053cfa5d4ed872b3788d743e8801d7f5f1a5b2ad331a3405ae908dc65e",
+      "bytes": 1912,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/generation_materials.py": {
+      "sha256": "898c8e985f9246c6de604615c332aab6c5caa0f09c8814c3c36212ca9eff91a6",
+      "bytes": 5882,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/image_material.py": {
+      "sha256": "cdc624308c122f40a9deea9b6958a3f43c69f4737df1017873fcec3140a6e560",
+      "bytes": 9693,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/import_checkpoint.py": {
+      "sha256": "64136a71c5ce0e5d1004ebda6a24c77e70636b28f00625f7d7f170a44f4c3791",
+      "bytes": 2184,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/import_progress.py": {
+      "sha256": "68c2a4b39132476b010556d4e255c2ee722e81ddfac9e87a758ef33188e68ce5",
+      "bytes": 2195,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/install_detached.py": {
+      "sha256": "04939e617ef880fed15db5e27320c67d2cd59f7401fbad358863e5a1cdbe0b45",
+      "bytes": 8661,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/install_lifecycle.py": {
+      "sha256": "583c1ade10b16636805a97c3ac3bef5b57460ddb960f6885296d9fb7d8af848d",
+      "bytes": 44845,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/install_workbuddy.py": {
+      "sha256": "6d4116fe1c118022869cfb85e5c9665f73558f2e5fcad4f78c3843428c013fad",
+      "bytes": 265,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/scripts/installer_process.py": {
+      "sha256": "e159c7c7363b5eae028f4022b1d9cf0fa9cd02cd98af7088fe888a7c6198b4fa",
+      "bytes": 454,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/kb_contracts.py": {
+      "sha256": "3b9ead2b17109b40b539559f9e57deed6f344a882d0e48d386f5706cd3eb0b57",
+      "bytes": 30023,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/scripts/material_common.py": {
+      "sha256": "05c1efc268b73688534a3667a94a229d5009c95f531e9d86db05c668a519b076",
+      "bytes": 2342,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/material_flow.py": {
+      "sha256": "a12049dcc0edbc69c03fd08ee6a44df9bfb1fbbf57d1a7bd07035a542bf46290",
+      "bytes": 21706,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/material_worker.py": {
+      "sha256": "44e3429c161ba2f9ab5a5807c7cca248bce5c25bd7501b5365a62571e30b6e7c",
+      "bytes": 4458,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/obsidian_view.py": {
+      "sha256": "ca057417092c20b32cb992431d78c42b9dbff7c7d5edbab00add90d63e41bbb1",
+      "bytes": 26750,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/ocr_decorations.py": {
+      "sha256": "623f016f15934a0048ba63127d631270fbd702bfa964d504c2f10748ebc61347",
+      "bytes": 21386,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/ocr_runtime.py": {
+      "sha256": "a4122b1ed0a75bb633f74964cfa2d60226172427ccb568195e031ed7759867da",
+      "bytes": 18849,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/ocr_worker.py": {
+      "sha256": "94037eb6c2cbca94735323806bff9cd7cfec9972c9e6b366eb44878ad4d7cf7e",
+      "bytes": 9601,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/operation_guard.py": {
+      "sha256": "5bf1aa8003dbc93d81e487799546c7c3636aad64205611395e7e6f7231e4ece4",
+      "bytes": 7099,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/owned_process.py": {
+      "sha256": "c08d79e632a62b0de0dbac950c99b03fd0cbb37331fe786e06e2df768cf6fe17",
+      "bytes": 19319,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/pdf_pipeline.py": {
+      "sha256": "5de080465a2b7bf90084c25ee9eacd703d1ede55f1145cdf2cf79aa9761d3732",
+      "bytes": 25742,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/personal_kb.py": {
+      "sha256": "fb0dd193dde5f65b12040f8dd5beaef59362e4e28967292a17bdc1c57fbcbf7a",
+      "bytes": 180091,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/scripts/process_metrics.py": {
+      "sha256": "7d8cc92171b735cd20c0e4aa36cec1c182063a6ea0669860f55f9ee6e0bb4161",
+      "bytes": 2218,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/query_vault.py": {
+      "sha256": "c12843a7887ec07d97a53393c7688958bf80c302e588e637d42c0a807441228c",
+      "bytes": 28867,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/scripts/retrieve_task.py": {
+      "sha256": "09922325a42258206cdfd7a0e559066fe067a6c9dd546ee6a4145932ffcb44c3",
+      "bytes": 19987,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/scripts/review_paging.py": {
+      "sha256": "7583c29eb2e8f25c61e65ab8d0a62f97e6a26eb7aab2e73f89a24ff63e058ee1",
+      "bytes": 3350,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/review_protocol.py": {
+      "sha256": "789832d02eca62ad57b8a2ea24b9e2a664c660f90d66953c1a8a3e9353889d5f",
+      "bytes": 54648,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/search_index.py": {
+      "sha256": "b4e1bb8e80915dbdda6e3afbf9340a2084ff153ce483909e148d312854c882b3",
+      "bytes": 13971,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/semantic_review.py": {
+      "sha256": "5a3354e66a4805dbe2372de65af94aa848aaade5f3beaf63c1cbbde6daa91bf6",
+      "bytes": 2729,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/setup_boundary.py": {
+      "sha256": "60bdeb9c89c70d340611bc247d10f2575096c430b9434ed01e2e5f763d0787cd",
+      "bytes": 2257,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/snapshot_storage.py": {
+      "sha256": "cd62c654a3390aa9e0fab37fb76705955cdbfe8e0aed05cb106338a6636d2509",
+      "bytes": 1061,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/source_policy.py": {
+      "sha256": "c638f1a6522b856fe14a158b4f5519e9e87fe6d9c42a636c5c204e5f85d4a5db",
+      "bytes": 2054,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/source_provenance.py": {
+      "sha256": "c56961b6e86ebc6590110bccdb857e286c5225bc4a2672ec4703cf6233e6301d",
+      "bytes": 6239,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/start_vault.py": {
+      "sha256": "e1462241b849b31af3f54fc77e268d59c0b58801dad7b5947e51dae0a542bfd8",
+      "bytes": 43920,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/scripts/user_feedback.py": {
+      "sha256": "e524971bf9c1f83335530dfd3e36f4e63f39221846f9b4fa5cf02f53f11582e2",
+      "bytes": 7701,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/visual_review.py": {
+      "sha256": "f3badf1b065e63aaecc0a0e20f75c22978b4d22e49022d8ee4cd561592492b17",
+      "bytes": 29665,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/visual_review_queue.py": {
+      "sha256": "70a31d07e47e3830866e5ec4a7e18535bdc6d722a92a3a80d5dfb0c678f2d038",
+      "bytes": 5142,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/visual_review_worker.py": {
+      "sha256": "ca27751d91e92fc72939c7f400a4fb4cc7f8bdf41137423bc3a8fda228d86f46",
+      "bytes": 3094,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/workbook_material.py": {
+      "sha256": "45d8b914babef0b949f9a0ae9827f9cacbc498f277bce0c5292906c73d86783d",
+      "bytes": 20151,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/workspace_guard.py": {
+      "sha256": "db5d2e955ec3fd30733f5cfbddc68f3b5cd7ea82852aae083ed953561052f6a1",
+      "bytes": 8383,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/ATTRIBUTION.md": {
+      "sha256": "8c24b56cea5e32d640edb0ac3919b0cd240505f5c5980fb8cc4cc59078363f8c",
+      "bytes": 2188,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/LICENSE": {
+      "sha256": "1c5915b8cde3e16949e40961353e483d44a65f90fae72405465dcff60118e57f",
+      "bytes": 1088,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/PRIVACY.md": {
+      "sha256": "0d7ca4c0c293413115d7db08eed97cf318cdf1a322c1d12bebb1a38ec8747f99",
+      "bytes": 2588,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/README.md": {
+      "sha256": "434419b1a342431e1893b6fd81739b34db2c02727c52799f7fb05d578b48de70",
+      "bytes": 16804,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/RELEASE_MANIFEST.json": {
+      "sha256": "ffeb3299e106797d84ca39323f1af41e68b23522d810097e294a704160d469ce",
+      "bytes": 37692,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/UPSTREAM.json": {
+      "sha256": "cee2ebecf000ba3fdb787aa92fb0c5885b464807e7d994bb190925843a45c816",
+      "bytes": 722,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/__init__.py": {
+      "sha256": "04085f7c054ce338249708fc8230d8da510250ddc04e3b3baef17293d1205d67",
+      "bytes": 296,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/__main__.py": {
+      "sha256": "9573278a10fd58f03b8d2480311533fb9d8ceec8e0ec13ce414b811d27c78c04",
+      "bytes": 85,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/capture.py": {
+      "sha256": "9fded207710e1e9b2fb60c6616b0675338b5eeaa1959f4ad972faec3c1ebd891",
+      "bytes": 83828,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/checkpoint.py": {
+      "sha256": "12fb1522321cddc72e2fe2123f56010a1c81ff0a0ec91b8659c2451a566a3e85",
+      "bytes": 50166,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/cli.py": {
+      "sha256": "38703e6db742f1c76ba6f8cce797b8ecf69a7cdf2ff1f9c739df60acab7e973a",
+      "bytes": 44772,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/contracts.py": {
+      "sha256": "995baf1ce86fc2b2ad426523bd142ef0853f6a41841dcd0e557c463cc8e9025c",
+      "bytes": 49622,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/extensions.py": {
+      "sha256": "846ef977af9d8029fdde3c7024159b3e8c35e3bd6c5fba020173726009bb5ee9",
+      "bytes": 2679,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/gates.py": {
+      "sha256": "d36cf301e5c4bbd40e5f225abd9cfa8f2071e59ef918a8a9d119ad4a8932b974",
+      "bytes": 5014,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/hook_adapter.py": {
+      "sha256": "79a3824641fd146a8960b57ca74bc4cd7fa29688f8928cdcd0e6ecbce5b35743",
+      "bytes": 11886,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/json_utils.py": {
+      "sha256": "31143eebb4e9d22de3159753a368a71ef2a15f3c84177e0507a29885ac1d31f1",
+      "bytes": 1105,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/ledgers.py": {
+      "sha256": "32cec2e5cc9846badbc4749e1e088988291c5d3a9db9abd2648de15213d4a038",
+      "bytes": 52285,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/legacy_lock.py": {
+      "sha256": "381b81253ae495ea4442fb1e7c651e74a80d6bc55e8141b353ff32e3c68dcf31",
+      "bytes": 24517,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/lint_engine.py": {
+      "sha256": "775cecd84170774fc3bf2f95a61c8b68df30e870baf863b4ac054b08587b94c3",
+      "bytes": 44602,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/mode_config.py": {
+      "sha256": "0dfa01bfcf52e55bcc50f5f7bbc4b2c2cc945f333cb5847b933da9c2a2579cbb",
+      "bytes": 2800,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/package_validation.py": {
+      "sha256": "963a54659a961de4e9791dd9abaffa9ede7a9e490a48bccadb5f4122cdd731ef",
+      "bytes": 20819,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/paths.py": {
+      "sha256": "819341f8b0a7bcd7bbe1741b13ea7ca8730e7d94f75371baf7071ff4bf45fca8",
+      "bytes": 17096,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/release.py": {
+      "sha256": "a99e4f09821caba7ccfd1f4cc564d7270447db47d3d1938f0d725786f1f49f87",
+      "bytes": 90792,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/transaction.py": {
+      "sha256": "3d2e65c34307ab54ca687045906852286b78f5182ac760332a0938fdabcb76ca",
+      "bytes": 176281,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/url_safety.py": {
+      "sha256": "d32b74164daa1bc735cc9a96b2cce07a5e3aa08209e4bdd2328dc6b8ef761d6b",
+      "bytes": 2402,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/claude_obsidian/vault_ops.py": {
+      "sha256": "ced9fc0cffb5f24a7772ec649cc09aaeca693725e17e2b66345572a1769e4ec9",
+      "bytes": 4812,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/config/adapters.json": {
+      "sha256": "edbaa57d35216b18ed33b6f1ded542cef851bac6271af5e58779a4f62df67af9",
+      "bytes": 2803,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/config/capabilities.json": {
+      "sha256": "9a372c18db93608f7112e8956f8dbb520c266e537b3794dee14b7436de3bc246",
+      "bytes": 17496,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/config/product-contract.json": {
+      "sha256": "b4455ef26fb0b8a1c327220d4156a13afe0dd3aa619d98ff2ed4eda44eae5ccd",
+      "bytes": 6716,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/config/public-marketplace.json": {
+      "sha256": "43af05abd417b29546718cf5bc34a7d1ad61e315e720ba333bb58fac1d661d67",
+      "bytes": 841,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/config/release-allowlist.json": {
+      "sha256": "2f09ac8a89734c39c0023ce5b09bb028a3f46cdc97f49af99bcd0af6749ff88c",
+      "bytes": 2054,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/scripts/allocate-address.sh": {
+      "sha256": "999ffab114d8584bacde49d36c10858a4e86784f84952e3056a150835618f03c",
+      "bytes": 3139,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/scripts/bm25-index.py": {
+      "sha256": "6d9a2d9fc6b9dd08061ed6606b7dbff60715de5e128e987581a722293bb61289",
+      "bytes": 31693,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/scripts/boundary-score.py": {
+      "sha256": "b1537782b93bc1a3dac64e8a097e786abd01b752af173a26acabdc7975edcd3c",
+      "bytes": 12627,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/scripts/claude-obsidian.py": {
+      "sha256": "34f3030da4a0ebc223a5dfba7f7180638d08dffa3d044be33fa72234866900c2",
+      "bytes": 357,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/scripts/contextual-prefix.py": {
+      "sha256": "2c0244bbe0a33f694f47c7e97933e285c2e3ed97001a7ae95eff5e3b27872f65",
+      "bytes": 37586,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/scripts/detect-transport.sh": {
+      "sha256": "5cee4d29099701a081d262f90de0c0c68e57b2fbbb058a47527e09a92293e663",
+      "bytes": 17194,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/scripts/rerank.py": {
+      "sha256": "744043d5a3b975237181e3c7273e733b42a3f82774f7f2e3f05ece6a5cc4beaf",
+      "bytes": 19960,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/scripts/retrieve.py": {
+      "sha256": "4ff0584c351239c63da5eb8324ac81279b5d90471629a5a77b4f5f4cfb4251fd",
+      "bytes": 13936,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/scripts/tiling-check.py": {
+      "sha256": "8f184015be341950e989df6f149513a67a844996eefad0e8083ebe33ca57ceec",
+      "bytes": 20328,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/scripts/wiki-lock.sh": {
+      "sha256": "3bfc9bd31dea36e60855877de12fcbd7a20ac79ea229a5d6a4fd1a681f840d02",
+      "bytes": 793,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/scripts/wiki-mode.py": {
+      "sha256": "f3c990d4ea2a8bec9752ed1474903532eac4a662af7c6e9f16927260596e12a5",
+      "bytes": 14345,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.gitignore": {
+      "sha256": "0d62dd96ce7a511d2f0154b6373b7a0bfc74b7985c2342af9357751b9fba42dd",
+      "bytes": 351,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.obsidian/app.json": {
+      "sha256": "b8c736f8900e4d28ead438125440572f32f5a475dd094ba7155b0879dc253c4b",
+      "bytes": 65,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.obsidian/appearance.json": {
+      "sha256": "d0bd766999b3bb8d45bdb5997916d82c51123c295599ff6a5db39ba40618bd7a",
+      "bytes": 53,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.obsidian/graph.json": {
+      "sha256": "574d00b8e5c2e16724678023c50a85e727af9067839f8612c55958e525f90c99",
+      "bytes": 101,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.obsidian/snippets/vault-colors.css": {
+      "sha256": "908fd97fabd94e989cc979605bb7b17b4da33c409e4846fd701780aea53107fd",
+      "bytes": 620,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/.raw/.manifest.json": {
+      "sha256": "3061feca9f7973930654de66ebf3bb0959e23783f0129ce899634c91e2c050fb",
+      "bytes": 132,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/inbox/.gitkeep": {
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/wiki/hot.md": {
+      "sha256": "111cfcce3e5f72d9475cf675528112741703ee82d7f8508ec520f38f5ea2378d",
+      "bytes": 398,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/wiki/index.md": {
+      "sha256": "cf768cf5e8af8118c2e3b4ab1ec3e8466b6c4a12a8800ec8bc5649f45ef634b6",
+      "bytes": 374,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/wiki/log.md": {
+      "sha256": "1f8415ce27cf5320306aebe19eba0810503270187841d2b287a802d80eb429e6",
+      "bytes": 187,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/vendor/claude-obsidian/templates/vault/wiki/overview.md": {
+      "sha256": "f6d4c76ec687b0124397280089d004226c530a127f33de31c77feb1d2c784b23",
+      "bytes": 226,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/使用说明.md": {
+      "sha256": "bfc7f92a1eda77e2939f5fbf427fe0d7327cdeac51fbc4aa4323712f95675bad",
+      "bytes": 855,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/安装到WorkBuddy.bat": {
+      "sha256": "dd10cb79699a72ee8b6cee646ca6b4b72c27c49cadc3760c50617473794960aa",
+      "bytes": 255,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/安装到WorkBuddy.command": {
+      "sha256": "e2c3c2ec2d492176fd08ad7b48d17e9c1a66115a5098e7b3ee225372d3ef2c8f",
+      "bytes": 258,
+      "executable": true
+    },
+    "skills/personal-knowledge-base/检查WorkBuddy安装.bat": {
+      "sha256": "044d44cbd2d61be4f7ae838bbe76a7deb0f6412484936733cf41f3bebcf60d7e",
+      "bytes": 255,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/检查WorkBuddy安装.command": {
+      "sha256": "94fb443e4b20dac05298a80d9e5aec538c51c257b9ee9a8b290b91ce9a6f3322",
+      "bytes": 258,
+      "executable": true
+    },
+    "tests/test_image_release.py": {
+      "sha256": "433b78f9efac5087a56b2845b9b4613cc749001d8c601bc249b349e242f82d0b",
+      "bytes": 8431,
+      "executable": false
+    },
+    "tests/test_multiformat.py": {
+      "sha256": "d89bc4699aef264e0a17d219168c9b20062abd2d9fcc31faa1204ea9dee7a51d",
+      "bytes": 23821,
+      "executable": false
+    },
+    "tests/test_workbook_release.py": {
+      "sha256": "34b06a54c031e8b96e2ecde4c0f6e976342928608b3e0a685e5866ca683f4fdb",
+      "bytes": 7889,
+      "executable": false
+    },
+    "tests/test_workshop.py": {
+      "sha256": "a5f2046e7179f06d1be5e4289a8bb95f80295518ea3772f9ce74e3171e517098",
+      "bytes": 18493,
+      "executable": false
+    },
+    "tools/verify_release.py": {
+      "sha256": "1f709c47fdf5d076274ddd4e29d7dd25262d5b51dff1cf59baa49d6ea80d15d3",
+      "bytes": 3530,
+      "executable": false
+    }
+  }
+}

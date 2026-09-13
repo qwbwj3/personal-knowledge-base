@@ -7,17 +7,18 @@ from __future__ import annotations
 import contextlib
 import importlib.util
 import json
+import math
 import os
 from pathlib import Path
 import sys
 import time
 from material_common import read, file_hash, safe
 
-ERROR_VALUES = {'#REF!','#DIV/0!','#VALUE!','#NAME?','#N/A','#NUM!','#NULL!','#SPILL!','#CALC!','#CIRC!'}
+ERROR_VALUES = {'#REF!','#DIV/0!','#VALUE!','#NAME?','#N/A','#NUM!','#NULL!','#SPILL!','#CALC!','#CIRC!','#GETTING_DATA'}
 
 
 def recalculate(job):
-    from workbook_material import read_workbook, validate_calculation
+    from workbook_material import read_workbook, validate_calculation, range_read
     path=safe(job['path'])
     if file_hash(path)!=job['source_sha256']:raise ValueError('calculation_source_changed')
     book_info=read_workbook(path);request=validate_calculation(book_info,job['request'])
@@ -35,12 +36,14 @@ def recalculate(job):
     values=[]
     for item in request['outputs']:
         matrix=book.worksheets.get_item(item['sheet']).get_range(item['cell']).values
-        if not isinstance(matrix,list) or len(matrix)!=1 or len(matrix[0])!=1:raise ValueError('unexpected_engine_output_shape')
+        if not isinstance(matrix,list) or len(matrix)!=1 or not isinstance(matrix[0],list) or len(matrix[0])!=1:raise ValueError('unexpected_engine_output_shape')
         value=matrix[0][0]
-        original=next(s for s in book_info['sheets'] if s['name']==item['sheet'])['cells'].get(item['cell'],{})
+        original=range_read(book_info,item['sheet'],item['cell'])['rows'][0][0]
+        if not (value is None or type(value) in (str,int,float,bool)) or (type(value) is float and not math.isfinite(value)):
+            return {'status':'calculation_incomplete','engine':'artifact_tool','executed':True,'error_code':'invalid_engine_value','output':item}
         if value is None and original.get('formula'):
             return {'status':'calculation_incomplete','engine':'artifact_tool','executed':True,'error_code':'missing_formula_result','output':item}
-        if isinstance(value,str) and value.startswith('#'):
+        if isinstance(value,str) and (value in ERROR_VALUES or (value.startswith('#') and value.endswith('!'))):
             return {'status':'calculation_incomplete','engine':'artifact_tool','executed':True,'error_code':'formula_error','output':item,'value':value}
         values.append({**item,'value':value})
     if file_hash(path)!=job['source_sha256']:raise ValueError('source_changed_during_calculation')

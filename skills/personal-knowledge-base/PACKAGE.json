@@ -1,7 +1,7 @@
 {
   "schema": "personal-kb.package.v1",
   "name": "personal-knowledge-base",
-  "version": "1.3.0-rc.1",
+  "version": "1.3.0-rc.2",
   "host": "workbuddy",
   "workbuddy_skill_root": "~/.codebuddy/skills",
   "base": {
@@ -69,11 +69,14 @@
     "actionable-host-vision-unavailable-notice",
     "direct-host-image-region-ingestion",
     "structured-xlsx-formula-cache-range-reading",
-    "on-demand-spreadsheet-engine-tasks"
+    "on-demand-spreadsheet-engine-tasks",
+    "current-release-visual-review-queue",
+    "revision-bound-visual-queue-pagination",
+    "typed-image-input-limit-without-repair"
   ],
   "platform": "Local desktop runtime; verify host capabilities and final user acceptance on the target environment",
-  "built_at": "2026-09-12",
-  "status": "image-spreadsheet-feature-pr-not-released",
+  "built_at": "2026-09-13",
+  "status": "integrated-release-candidate-under-validation",
   "legacy_contract_features": [
     "product-alias-and-year-resolution",
     "claim-by-claim-review",

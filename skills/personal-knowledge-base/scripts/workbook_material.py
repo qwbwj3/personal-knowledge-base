@@ -78,21 +78,37 @@ def _display(raw, fmt, date1904=False):
     num = Decimal(str(raw))
     if fmt in ('General', '@'): return str(raw), 'raw_general'
     # Explicitly small renderer: preserve format code for all other cases.
-    match = re.fullmatch(r'(\$|¥|￥)?(#,##0|0)(?:\.(0{1,12}))?(%)?', fmt)
+    match = re.fullmatch(r'(\$|¥|￥|"[$¥￥]")?(#,##0|0)(?:\.(0{1,12}))?(%)?', fmt)
     if match:
         symbol, grouping, decimals, percent = match.groups()
         places = len(decimals or '')
         value = num * (100 if percent else 1)
         try: rounded = value.quantize(Decimal(1).scaleb(-places), rounding=ROUND_HALF_UP)
         except InvalidOperation: return str(raw), 'unsupported_precision_preserved'
-        return (symbol or '') + format(rounded, (',' if grouping.startswith('#') else '') + f'.{places}f') + ('%' if percent else ''), 'supported_format'
-    dates = {'yyyy-mm-dd':'%Y-%m-%d','yyyy/mm/dd':'%Y/%m/%d','mm-dd-yy':'%m-%d-%y',
-             'm/d/yy':'%m/%d/%y','m/d/yyyy':'%m/%d/%Y','yyyy-mm-dd hh:mm:ss':'%Y-%m-%d %H:%M:%S',
-             'm/d/yy h:mm':'%m/%d/%y %H:%M','h:mm':'%H:%M','h:mm:ss':'%H:%M:%S'}
-    if fmt.lower() in dates:
-        if not date1904 and 60 <= num < 61: return '1900-02-29 (Excel compatibility date)', 'excel_1900_leap_day'
+        sign = '-' if rounded < 0 else ''
+        return sign + (symbol or '').strip('"') + format(abs(rounded), (',' if grouping.startswith('#') else '') + f'.{places}f') + ('%' if percent else ''), 'supported_format'
+    # Build unpadded Excel components ourselves; strftime %-d/%#d differs
+    # between Unix and Windows. Only exact known formats are labelled supported.
+    formats = {'yyyy-mm-dd','yyyy/mm/dd','mm-dd-yy','m/d/yy','m/d/yyyy',
+               'yyyy-mm-dd hh:mm:ss','m/d/yy h:mm','h:mm','h:mm:ss'}
+    code = fmt.lower()
+    if code in formats:
+        time_only = code in ('h:mm', 'h:mm:ss')
+        if not date1904 and 60 <= num < 61 and not time_only:
+            return '1900-02-29 (Excel compatibility date)', 'excel_1900_leap_day'
         days = float(num) - (1 if not date1904 and num >= 61 else 0)
-        try: return ((datetime(1904,1,1) if date1904 else datetime(1899,12,31)) + timedelta(days=days)).strftime(dates[fmt.lower()]), 'supported_format'
+        try:
+            dt = (datetime(1904,1,1) if date1904 else datetime(1899,12,31)) + timedelta(days=days)
+            values = {'yyyy-mm-dd':f'{dt.year:04d}-{dt.month:02d}-{dt.day:02d}',
+                      'yyyy/mm/dd':f'{dt.year:04d}/{dt.month:02d}/{dt.day:02d}',
+                      'mm-dd-yy':f'{dt.month:02d}-{dt.day:02d}-{dt.year % 100:02d}',
+                      'm/d/yy':f'{dt.month}/{dt.day}/{dt.year % 100:02d}',
+                      'm/d/yyyy':f'{dt.month}/{dt.day}/{dt.year:04d}',
+                      'h:mm':f'{dt.hour}:{dt.minute:02d}',
+                      'h:mm:ss':f'{dt.hour}:{dt.minute:02d}:{dt.second:02d}'}
+            values['yyyy-mm-dd hh:mm:ss'] = values['yyyy-mm-dd'] + f' {dt.hour:02d}:{dt.minute:02d}:{dt.second:02d}'
+            values['m/d/yy h:mm'] = values['m/d/yy'] + ' ' + values['h:mm']
+            return values[code], 'supported_format'
         except (OverflowError, ValueError): pass
     return str(raw), 'unsupported_format_preserved'
 
@@ -147,7 +163,7 @@ def read_workbook(path):
                 'declared_range': dimension.get('ref') if dimension is not None else None,
                 'cells':{},'merged_ranges':[n.get('ref') for n in node.findall('{*}mergeCells/{*}mergeCell')],
                 'hidden_rows':[], 'column_properties':[dict(n.attrib) for n in node.findall('{*}cols/{*}col')],
-                'formula_masters':{}}
+                'formula_masters':{}, 'formula_regions':[]}
             for ref in record['merged_ranges']: rectangle(ref)
             for row in node.findall('{*}sheetData/{*}row'):
                 if row.get('hidden') in ('1','true'): record['hidden_rows'].append(int(row.get('r')))
@@ -163,6 +179,7 @@ def read_workbook(path):
                         if raw is None or not 0 <= int(raw) < len(shared): raise ValueError('invalid_shared_string')
                         value = shared[int(raw)]
                     elif kind == 'inlineStr': value = _text(cell.find('{*}is'))
+                    elif kind == 'str' and val is not None and raw is None: value = ''
                     elif kind == 'b':
                         if raw not in (None,'0','1'):raise ValueError('invalid_boolean_cell')
                         value = None if raw is None else raw == '1'
@@ -174,6 +191,11 @@ def read_workbook(path):
                     if form is not None:
                         if len(form.text or '') > 8192: raise ValueError('formula_length_limit')
                         formula = {'text':form.text or '', 'attributes':dict(form.attrib)}
+                        if form.get('ref') and form.get('t') in ('array','dataTable','shared'):
+                            bounds = rectangle(form.get('ref'))
+                            if not (bounds[0] <= r <= bounds[2] and bounds[1] <= c <= bounds[3]):
+                                raise ValueError('formula_master_outside_range')
+                            record['formula_regions'].append({'range':form.get('ref'),'anchor':coord,'type':form.get('t')})
                         if form.get('t')=='shared' and form.text:
                             record['formula_masters'][form.get('si')] = {'address':coord,**formula}
                     style_id = int(cell.get('s','0'))
@@ -182,11 +204,12 @@ def read_workbook(path):
                     display,status = _display(value,code,date1904)
                     record['cells'][coord] = {'address':coord,'row':r,'column':c,'type':kind,'raw_value':raw,
                         'value':value,'formula':formula,'cached_value':value if formula else None,
-                        'cache_status':('missing' if val is None else 'error' if kind=='e' else 'saved_cache_unverified') if formula else 'not_formula',
+                        'cache_status':('missing' if val is None or (raw is None and kind != 'str') else 'error' if kind=='e' else 'saved_cache_unverified') if formula else 'not_formula',
                         'number_format':code,'display_text':display,'display_status':status}
             for cell in record['cells'].values():
+                _annotate_formula_region(record, cell)
                 f = cell['formula']
-                if f and f['attributes'].get('t')=='shared' and not f['text']:
+                if f and f['attributes'].get('t')=='shared' and 'si' in f['attributes'] and not f['text']:
                     f['master'] = record['formula_masters'].get(f['attributes'].get('si'))
                     f['expansion_status'] = 'engine_required_not_an_empty_cell'
             coords = [(x['row'],x['column']) for x in record['cells'].values()]
@@ -205,6 +228,28 @@ def read_workbook(path):
     return output
 
 
+def _formula_region(sheet, row, col):
+    for region in sheet.get('formula_regions', []):
+        a,b,x,y = rectangle(region['range'])
+        if a <= row <= x and b <= col <= y:
+            return region
+    return None
+
+
+def _annotate_formula_region(sheet, cell):
+    if cell.get('formula'): return
+    region = _formula_region(sheet, cell['row'], cell['column'])
+    if region:
+        # Array/data-table/shared result children need not have their own <f>.
+        # Preserve their relationship without inventing an expanded formula.
+        cell['formula'] = {'text':'', 'attributes':{'t':region['type']},
+            'master':{'address':region['anchor']}, 'range':region['range'],
+            'expansion_status':'engine_required_not_an_empty_cell'}
+        cell['cached_value'] = cell.get('value')
+        cell['cache_status'] = ('missing' if cell.get('value') is None else
+                                'error' if cell.get('type') == 'e' else 'saved_cache_unverified')
+
+
 def range_read(book, sheet_name, ref):
     sheets = [s for s in book['sheets'] if s['name']==sheet_name]
     if len(sheets)!=1: raise ValueError('unknown_worksheet')
@@ -215,9 +260,14 @@ def range_read(book, sheet_name, ref):
         row=[]
         for c in range(c0,c1+1):
             at=address(r,c); value=dict(sheet['cells'].get(at,{'address':at,'row':r,'column':c,'value':None,'formula':None,'cache_status':'not_formula','display_text':None,'type':'blank'}))
+            _annotate_formula_region(sheet, value)
             for merged in sheet['merged_ranges']:
                 a,b,x,y=rectangle(merged)
-                if a<=r<=x and b<=c<=y: value.update(merged_range=merged,merged_anchor=address(a,b));break
+                if a<=r<=x and b<=c<=y:
+                    anchor=sheet['cells'].get(address(a,b),{})
+                    value.update(merged_range=merged,merged_anchor=address(a,b),
+                                 merged_anchor_value=anchor.get('value'),merged_anchor_display=anchor.get('display_text'))
+                    break
             value['hidden_row']=r in sheet['hidden_rows']
             value['hidden_column']=any(int(x['min'])<=c<=int(x['max']) and x.get('hidden') in ('1','true') for x in sheet['column_properties'])
             row.append(value)
@@ -259,7 +309,12 @@ def validate_calculation(book, request):
         seen.add(key);val=item['value']
         if not (val is None or type(val) in (str,int,float,bool)) or (isinstance(val,str) and (val.startswith('=') or len(val)>32767)):
             raise ValueError('literal_input_only_no_formula_injection')
-        if sheets[item['sheet']]['cells'].get(item['cell'],{}).get('formula'):raise ValueError('scenario_input_must_not_replace_formula')
+        if sheets[item['sheet']]['cells'].get(item['cell'],{}).get('formula') or _formula_region(sheets[item['sheet']], *rc):
+            raise ValueError('scenario_input_must_not_replace_formula')
+        for merged in sheets[item['sheet']]['merged_ranges']:
+            a,b,x,y = rectangle(merged)
+            if a <= rc[0] <= x and b <= rc[1] <= y and rc != (a,b):
+                raise ValueError('scenario_input_must_use_merged_anchor')
         if isinstance(val,float) and (val!=val or abs(val)==float('inf')):raise ValueError('nonfinite_input')
     seen=set()
     for item in request['outputs']:
