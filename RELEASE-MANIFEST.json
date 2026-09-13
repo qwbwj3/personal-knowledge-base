@@ -633,8 +633,8 @@
       "executable": true
     },
     "tests/test_workshop.py": {
-      "sha256": "d0bb619e1687b8d55be2c5fa7d6daa2a30e20454c941ffa47eace2266dab557e",
-      "bytes": 18333,
+      "sha256": "a5f2046e7179f06d1be5e4289a8bb95f80295518ea3772f9ce74e3171e517098",
+      "bytes": 18493,
       "executable": false
     },
     "tools/verify_release.py": {

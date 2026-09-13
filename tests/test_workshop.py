@@ -290,7 +290,9 @@ class InputAndFormatTests(unittest.TestCase):
                 patch.object(Path,'is_file',return_value=True), \
                 patch.object(vr,'_read',return_value={'ok':True}) as read:
             self.assertEqual(vr.read_decision_input('/tmp/sample.json'),{'ok':True})
-        read.assert_called_once_with(Path('/private/tmp/sample.json'))
+        # A Windows native path must not acquire macOS alias semantics.
+        expected = Path('/tmp/sample.json').absolute() if os.name == 'nt' else Path('/private/tmp/sample.json')
+        read.assert_called_once_with(expected)
 
     def test_26_parent_traversal_remains_rejected(self):
         with self.assertRaisesRegex(ValueError,'parent traversal'):
