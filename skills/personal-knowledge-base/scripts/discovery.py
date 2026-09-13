@@ -85,7 +85,7 @@ def source_text(api, item, cache):
 
 def guard_token(api, args):
     _, root, config = api.select_kb(api.state_home(args), args.name, args.kb_id)
-    return digest([config, api.read_json(root / 'current.json'), api.visual_review.revision(root)])
+    return digest([config, api.read_json(root / 'current.json'), api.visual_review.revision(root), api.material_flow.revision(root)])
 
 
 def maintain(api, root, config):
