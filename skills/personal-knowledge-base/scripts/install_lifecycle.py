@@ -602,7 +602,12 @@ class Lifecycle:
                 refuse('unmanaged_installation', '现有目录无收据；可提供已受信旧提交使用 --adopt-commit 精确接管，或由用户另选安装路径。')
             return {'status': 'needs_install', 'target': str(self.target)}, 1
         self.target.parent.mkdir(parents=True, exist_ok=True)
-        self.manager.mkdir(exist_ok=True)
+        safe(self.manager)
+        # Preserve host interception, but avoid its nonrecursive exist_ok bug
+        # when this already-validated management directory needs no creation.
+        if not self.manager.is_dir():
+            self.manager.mkdir(exist_ok=True)
+        safe(self.manager)
         if self.manager.stat().st_dev != self.target.parent.stat().st_dev or (self.target.exists() and self.target.stat().st_dev != self.manager.stat().st_dev):
             refuse('different_filesystems')
         with lock(self.manager / 'lock'):

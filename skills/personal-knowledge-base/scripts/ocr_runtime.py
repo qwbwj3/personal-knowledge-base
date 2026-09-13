@@ -38,6 +38,13 @@ WORKER = Path(__file__).with_name('ocr_worker.py')
 TIMEOUT = 180
 
 
+class OCRInputLimitError(RuntimeError):
+    """Input preparation is required; rerunning prepare will not fix it."""
+    code = 'image_input_limit_exceeded'
+    repair_required = False
+
+
+
 def runtime_home() -> Path:
     override = os.environ.get('PERSONAL_KB_OCR_HOME')
     if override:
@@ -187,6 +194,15 @@ def _run_worker(home: Path, args: list[str], *, timeout: float | None = None) ->
             raise error from exc
         raise RuntimeError('OCR worker timeout; owned processes terminated and checked: ' + json.dumps(details)) from exc
     if proc.returncode:
+        try:
+            problem = json.loads(proc.stdout)
+        except (ValueError, TypeError):
+            problem = {}
+        if (isinstance(problem, dict) and problem.get('code') == 'image_input_limit_exceeded'
+                and problem.get('repair_required') is False):
+            raise OCRInputLimitError('图片超过当前直接OCR输入上限；这不是模型损坏，不需prepare。'
+                '长截图请保留原件并使用经过核验的分区或派生文档流程；不能只缩图、丢弃失败区域或降低质量门槛。'
+                '当前尚无自动长图分区和图片视觉复核入口。')
         raise RuntimeError(f'OCR worker failed: {(proc.stderr or proc.stdout)[-3000:]}')
     try:
         value = json.loads(proc.stdout)
@@ -226,7 +242,7 @@ def _recognize(path: Path, page_index: int | None) -> dict:
         args = ['image', str(path)] if page_index is None else ['pdf-page', str(path), '--page-index', str(page_index)]
         return _run_worker(home, args)
     except (OSError, RuntimeError) as exc:
-        if getattr(exc, 'abort_operation', False):
+        if getattr(exc, 'abort_operation', False) or isinstance(exc, OCRInputLimitError):
             raise
         raise RuntimeError(f'{exc}\nSetup/repair: {_setup(home)}') from exc
 
@@ -330,7 +346,13 @@ def prepare(home: Path) -> dict:
                        check=True, stdout=sys.stderr, env=env, timeout=900, **quiet_subprocess_kwargs())
         subprocess.run([str(_python(home)), '-m', 'pip', 'check'], check=True, stdout=sys.stderr, env=env, timeout=900, **quiet_subprocess_kwargs())
         _check_versions(home)
-        (home / 'models').mkdir(exist_ok=True)
+        models = home / 'models'
+        if models.is_symlink() or (hasattr(models, 'is_junction') and models.is_junction()):
+            raise RuntimeError('Model directory must not be a link or junction')
+        if not models.is_dir():
+            models.mkdir(exist_ok=True)
+        if models.is_symlink() or (hasattr(models, 'is_junction') and models.is_junction()):
+            raise RuntimeError('Model directory must not be a link or junction')
         for item in _spec()['models'].values():
             target = home / 'models' / item['file']
             if target.is_file() and _digest(target) == item['sha256']:

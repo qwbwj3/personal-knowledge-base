@@ -1,10 +1,15 @@
 {
   "schema": "personal-kb.release-inventory.v1",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "files": {
     ".gitattributes": {
       "sha256": "57a25c7bbdb6cbd7644d7dd9a686e524d55ffa9c293ba6c0eb5881a4b79ed9bd",
       "bytes": 153,
+      "executable": false
+    },
+    ".github/workflows/material-check.yml": {
+      "sha256": "815ae8f83f25115d0d7f84c9561c80b995386f74a939f744724a658b54596560",
+      "bytes": 1496,
       "executable": false
     },
     ".gitignore": {
@@ -13,8 +18,8 @@
       "executable": false
     },
     "FINAL-ACCEPTANCE.md": {
-      "sha256": "b26c00eef6e70b742b00575fbc5d47de3361484c82c0ac5d7e049c7fa15813a1",
-      "bytes": 3181,
+      "sha256": "969769ab069a2ad24937e6e071a91856e48fe3e77462959475ddc8b36dfb097d",
+      "bytes": 3365,
       "executable": false
     },
     "PUBLICATION-AUDIT.json": {
@@ -23,18 +28,18 @@
       "executable": false
     },
     "PUBLICATION.md": {
-      "sha256": "266968963cb2ce9387e4b73bc3576ebed609efd642a9b0bebed1b7bcdcbeaca5",
-      "bytes": 1275,
+      "sha256": "6dcde233bd4847f116e6678c20f39de75f565ff2237ca19f6ba0ec3f666e1b23",
+      "bytes": 1431,
       "executable": false
     },
     "README.md": {
-      "sha256": "f68612f2aff12e4bdee8e6b7c82f9e36e2cb4362c70d662c3226c7491ffc6582",
-      "bytes": 5865,
+      "sha256": "84c34eafb11ebef3c669145c4067562bf2a61a233db7f936c84362f312ba7424",
+      "bytes": 7549,
       "executable": false
     },
     "RELEASE-NOTES.md": {
-      "sha256": "aba128899f14b6100d4b8c92ab8006e4659be7a8587e122e3f1cb79ccdc009b4",
-      "bytes": 1822,
+      "sha256": "cea5075fe1799f689a07c8c0adfbf83ac654b2415005d5809d52cb4cfe2142b4",
+      "bytes": 3409,
       "executable": false
     },
     "SECURITY.md": {
@@ -47,14 +52,29 @@
       "bytes": 780,
       "executable": false
     },
+    "docs/MULTIFORMAT-DEVELOPMENT.md": {
+      "sha256": "50a1ddd73016c50163c2122417a3cd1cea87cd2d7eea2566b239eecc22ef6870",
+      "bytes": 11231,
+      "executable": false
+    },
+    "docs/MULTIFORMAT-RESULTS.json": {
+      "sha256": "cc9a4e8c087ea65a0c3819e3978f8023506fba198574f472ba2fbc9ec4cecaaf",
+      "bytes": 6371,
+      "executable": false
+    },
+    "docs/RELEASE-1.3.0-ACCEPTANCE.md": {
+      "sha256": "9de041d002fc34939fb8a30b15f8e1ded110016a03a0746c8ae45223b3ed6547",
+      "bytes": 4045,
+      "executable": false
+    },
     "skills/personal-knowledge-base/PACKAGE.json": {
-      "sha256": "af71d757beae2ebcee05441fb84f6e4b6b14fd0060f529601e971cc24209e03d",
-      "bytes": 3356,
+      "sha256": "72421d4ef37e72ee6986c29be6b4429de7fc394ec18f8a7f7251acb4b76b768b",
+      "bytes": 3601,
       "executable": false
     },
     "skills/personal-knowledge-base/SKILL.md": {
-      "sha256": "6ee3dcd59d1ca75dc380426cfa8a3c85b30da0e21b627236b7d9179b69261a61",
-      "bytes": 32635,
+      "sha256": "d78895b39ed8dc88e9679fcd0f0ae82495b6086bfbe1133f30a98eb6e1b48de8",
+      "bytes": 35911,
       "executable": false
     },
     "skills/personal-knowledge-base/agents/openai.yaml": {
@@ -80,6 +100,11 @@
     "skills/personal-knowledge-base/references/installation-lifecycle.md": {
       "sha256": "0b816772ac8ad7e330c839294f19c27123b4903f91ce11cd270eb4408ec74ba5",
       "bytes": 13744,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/references/materials.md": {
+      "sha256": "4acd9c6c19309afc91286a6f1e3696d85cc962f51dc09286886458951032bdfc",
+      "bytes": 8704,
       "executable": false
     },
     "skills/personal-knowledge-base/references/obsidian-workflow.md": {
@@ -127,9 +152,14 @@
       "bytes": 3753,
       "executable": false
     },
+    "skills/personal-knowledge-base/references/supported-formats.md": {
+      "sha256": "b4bd263bd8cac79544066d236f9578c33cbf3c74c70d6ed29a8e836689ab17ec",
+      "bytes": 2698,
+      "executable": false
+    },
     "skills/personal-knowledge-base/references/visual-review.md": {
-      "sha256": "8a13bf76cfd0ea96c2f9e1fcc523a2268f5ec587731fc1eea1ef51b2b023a7ec",
-      "bytes": 7205,
+      "sha256": "231cace9a626c1e80a2f0f6325e958ac31e5d5645e4b49967ce0ce0eaa2299ea",
+      "bytes": 9380,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/apply_chinese_graph.py": {
@@ -143,8 +173,8 @@
       "executable": true
     },
     "skills/personal-knowledge-base/scripts/classification_flow.py": {
-      "sha256": "c30d1e8b3f29cf8bbfc898108479aee9456456c5cb1e94cd01a124b83e4649f3",
-      "bytes": 24121,
+      "sha256": "32a2673db10a9932837ab811f26dfc2e8ddc3576a16ee95ca60ae568711f5337",
+      "bytes": 24161,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/configure_scope.py": {
@@ -153,8 +183,8 @@
       "executable": true
     },
     "skills/personal-knowledge-base/scripts/discovery.py": {
-      "sha256": "c52b1aca1666bd3d3d37b6a8702fbe165848d429d4488641e4ded26a2ab752ca",
-      "bytes": 26044,
+      "sha256": "3eb37b6cab1fe51c940b8951861b9ed4640b7fdd9222e4ee7dc60441c3bb5066",
+      "bytes": 26078,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/export_graph_context.py": {
@@ -170,6 +200,11 @@
     "skills/personal-knowledge-base/scripts/generation_materials.py": {
       "sha256": "898c8e985f9246c6de604615c332aab6c5caa0f09c8814c3c36212ca9eff91a6",
       "bytes": 5882,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/image_material.py": {
+      "sha256": "cdc624308c122f40a9deea9b6958a3f43c69f4737df1017873fcec3140a6e560",
+      "bytes": 9693,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/import_checkpoint.py": {
@@ -188,8 +223,8 @@
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/install_lifecycle.py": {
-      "sha256": "583c1ade10b16636805a97c3ac3bef5b57460ddb960f6885296d9fb7d8af848d",
-      "bytes": 44845,
+      "sha256": "118ea171b77a07dc4f51faebcf0f3ad8538c04ff63ad25b6a73d88d0d49affae",
+      "bytes": 45097,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/install_workbuddy.py": {
@@ -207,6 +242,21 @@
       "bytes": 30023,
       "executable": true
     },
+    "skills/personal-knowledge-base/scripts/material_common.py": {
+      "sha256": "05c1efc268b73688534a3667a94a229d5009c95f531e9d86db05c668a519b076",
+      "bytes": 2342,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/material_flow.py": {
+      "sha256": "a12049dcc0edbc69c03fd08ee6a44df9bfb1fbbf57d1a7bd07035a542bf46290",
+      "bytes": 21706,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/material_worker.py": {
+      "sha256": "44e3429c161ba2f9ab5a5807c7cca248bce5c25bd7501b5365a62571e30b6e7c",
+      "bytes": 4458,
+      "executable": false
+    },
     "skills/personal-knowledge-base/scripts/obsidian_view.py": {
       "sha256": "ca057417092c20b32cb992431d78c42b9dbff7c7d5edbab00add90d63e41bbb1",
       "bytes": 26750,
@@ -218,13 +268,13 @@
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/ocr_runtime.py": {
-      "sha256": "214ad028d3a14eb0b9c0a9ad3076747d7a05b4c5ae8d11b0e354ffd494de04be",
-      "bytes": 17984,
+      "sha256": "d0cebd615aafc0d5678b54039be7744cb7f88268c9e97fd079ac5ac08d076cc6",
+      "bytes": 19255,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/ocr_worker.py": {
-      "sha256": "8d8a8377c464ea2c2ed8f47980caae5e83e054f505e008528116087074d4e78a",
-      "bytes": 9191,
+      "sha256": "94037eb6c2cbca94735323806bff9cd7cfec9972c9e6b366eb44878ad4d7cf7e",
+      "bytes": 9601,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/operation_guard.py": {
@@ -243,8 +293,8 @@
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/personal_kb.py": {
-      "sha256": "4cc5f10fd75ebc01ad695ad530103e3ad060299401eb9f5783d1e0329acbaeed",
-      "bytes": 177337,
+      "sha256": "fb0dd193dde5f65b12040f8dd5beaef59362e4e28967292a17bdc1c57fbcbf7a",
+      "bytes": 180091,
       "executable": true
     },
     "skills/personal-knowledge-base/scripts/process_metrics.py": {
@@ -273,8 +323,8 @@
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/search_index.py": {
-      "sha256": "b4e1bb8e80915dbdda6e3afbf9340a2084ff153ce483909e148d312854c882b3",
-      "bytes": 13971,
+      "sha256": "e438884140b06569bf2cd8f88aeccd22a9fb31252af86bf7c60c30dab59e325b",
+      "bytes": 14198,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/semantic_review.py": {
@@ -313,13 +363,23 @@
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/visual_review.py": {
-      "sha256": "06342e3f2d3f0bdd9a71653c54eaaad6a6b56cc7ad843c6653c7e462460d0edc",
-      "bytes": 27849,
+      "sha256": "f3badf1b065e63aaecc0a0e20f75c22978b4d22e49022d8ee4cd561592492b17",
+      "bytes": 29665,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/visual_review_queue.py": {
+      "sha256": "70a31d07e47e3830866e5ec4a7e18535bdc6d722a92a3a80d5dfb0c678f2d038",
+      "bytes": 5142,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/visual_review_worker.py": {
       "sha256": "ca27751d91e92fc72939c7f400a4fb4cc7f8bdf41137423bc3a8fda228d86f46",
       "bytes": 3094,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/workbook_material.py": {
+      "sha256": "45d8b914babef0b949f9a0ae9827f9cacbc498f277bce0c5292906c73d86783d",
+      "bytes": 20151,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/workspace_guard.py": {
@@ -617,11 +677,40 @@
       "bytes": 258,
       "executable": true
     },
+    "tests/test_classification_materials.py": {
+      "sha256": "d192abd1cc94f2ec263d2206594c10ae2c15de6496dbaa676fa0d8710bf4e956",
+      "bytes": 4390,
+      "executable": false
+    },
+    "tests/test_host_mkdir_compatibility.py": {
+      "sha256": "1542147de4abe83203f1d59f064ab9e95b9c3be4db1714962bdd14a356288083",
+      "bytes": 5475,
+      "executable": false
+    },
+    "tests/test_image_release.py": {
+      "sha256": "433b78f9efac5087a56b2845b9b4613cc749001d8c601bc249b349e242f82d0b",
+      "bytes": 8431,
+      "executable": false
+    },
+    "tests/test_multiformat.py": {
+      "sha256": "d89bc4699aef264e0a17d219168c9b20062abd2d9fcc31faa1204ea9dee7a51d",
+      "bytes": 23821,
+      "executable": false
+    },
+    "tests/test_workbook_release.py": {
+      "sha256": "34b06a54c031e8b96e2ecde4c0f6e976342928608b3e0a685e5866ca683f4fdb",
+      "bytes": 7889,
+      "executable": false
+    },
+    "tests/test_workshop.py": {
+      "sha256": "a5f2046e7179f06d1be5e4289a8bb95f80295518ea3772f9ce74e3171e517098",
+      "bytes": 18493,
+      "executable": false
+    },
     "tools/verify_release.py": {
       "sha256": "1f709c47fdf5d076274ddd4e29d7dd25262d5b51dff1cf59baa49d6ea80d15d3",
       "bytes": 3530,
       "executable": false
     }
-  },
-  "note": "Manifest excludes itself. Authenticate the release commit/archive hash separately."
+  }
 }

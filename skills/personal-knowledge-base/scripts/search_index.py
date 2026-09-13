@@ -69,7 +69,11 @@ def locked(root, timeout=120):
     root = root.resolve(strict=True)
     directory = root / 'derived-search'
     _safe(directory, 'directory')
-    directory.mkdir(mode=0o700, exist_ok=True)
+    # Some host-brokered mkdir implementations drop exist_ok. Do not issue a
+    # redundant write for a validated directory; real create denials still fail.
+    if not directory.is_dir():
+        directory.mkdir(mode=0o700, exist_ok=True)
+    _safe(directory, 'directory')
     lock_path = directory / 'index.lock'
     _safe(lock_path, 'file')
     with operation_guard._open(lock_path, True) as handle:

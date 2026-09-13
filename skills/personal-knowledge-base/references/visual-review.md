@@ -22,12 +22,22 @@ python3 -B <skill>/scripts/personal_kb.py --state-home <state> visual-review --k
 
 恢复看图能力后在同一state/KB继续原请求，不能编造`images_seen`。准备和Agent判断提交也不得在明确不可看图时继续；本人已有的转录确认与撤销不依赖模型看图。`--vision-capability`是宿主如实上报，不是程序或远端模型的自动能力证书。
 
+## 当前队列、分页和历史
+
+当前待办由已验证的有效发布（current/leads及当前失败候选）与具体原件修订共同决定。保留的历史请求不是新任务，已正常读清的资料不再计入；接受决定但尚未update的页面为awaiting_update，不再要求看图。源内容或提取版本改变、决定撤销时，不能仅凭相同文件名/页码套用旧确认。
+
+列表默认20条，可用`--limit 1..100 --offset N`。每页返回pending_count、awaiting_update_count、items_total、items_returned、has_more、next_offset、queue_id。后续页必须带`--queue-id <返回值>`；队列变更会要求重新从0开始。总数是全队列，不是当前页数量。先根据state决定动作，不把所有items都当需要看图。
+
+`source_revision_unavailable_count`表示历史请求关联源已不可核验的计数，不等于这批文件损坏；结合正常update的维护报告处理。本命令检查当前发布但不重新OCR、不删除账本、不写入新决定。没有需看图页时，即使宿主能力unavailable也不要求切模型；若只有已接受未发布的决定，则提示正常update。
+
 ## 1. 列出／准备
 
 ```sh
 python3 -B <skill>/scripts/personal_kb.py --state-home <state> visual-review --kb-id <id>
-python3 -B <skill>/scripts/personal_kb.py --state-home <state> visual-review --kb-id <id> --prepare <request_id> --model-image-egress-approved yes --confirmation '<本人对这一资料范围的图片复核授权记录>'
+python3 -B <skill>/scripts/personal_kb.py --state-home <state> visual-review --kb-id <id> --prepare <request_id> --model-image-egress-approved yes --confirmation '<本人对这一资料范围的真实图片复核授权记录，首尾去空白后至少8字符>'
 ```
+
+`--vision-capability available`只说明宿主工具可用，不代表用户同意图片外发；不能代替两项授权参数。已获同范围授权时由Agent填写真实记录，不让学员补参数或虚构授权。已解决、已被替代或已接受待update的请求不能再次prepare。
 
 准备会复核原件 SHA 和页码，本地生成问题页全图及最多八个低分行附近裁剪图，单页图像上限 8 百万像素。没有缩小区域时只返回全页。使用本机 PDFium；当前 Python 没有时可复用已准备的隔离 OCR 运行时中的 PDFium，不安装／下载模型、不执行 OCR 推理。45 秒受控渲染超时，回收不明停止，不能另起重复任务。
 
@@ -88,3 +98,10 @@ python3 -B <skill>/scripts/personal_kb.py --state-home <state> update --kb-id <i
 ## 范围
 
 当前实现针对 PDF 问题页，图像文件 OCR 仍走原流程；不是任意格式或任意低分文本的万能放行。完整问题页可视复核并不证明产品效力、法律含义、全部文档语义或复杂表格结构正确。现有资料分类／`non_authoritative` 限制保留。
+
+
+## 外部决定JSON路径
+
+Agent应使用规范化后的真实临时路径和UTF-8 JSON。在macOS，外部`--decision-file`/`--confirm-proposal`允许已确认的系统`/tmp`→`/private/tmp`别名，目录下的任意符号链接、文件链接和junction仍被拒绝；这不是对原件或状态目录放宽链接保护。其它临时目录别名请先取实际规范路径。错误明确标识decision-file输入；不要根据模糊错误改动账本或安装目录。
+
+此视觉流程目前仅支持PDF问题页，不为普通图片、Word嵌图、PPT或XLSX图表生成复核任务。详细格式边界见[supported-formats.md](supported-formats.md)。

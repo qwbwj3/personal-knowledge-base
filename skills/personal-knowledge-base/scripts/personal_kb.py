@@ -34,6 +34,9 @@ from typing import Any
 import operation_guard
 import classification_flow
 import visual_review
+import material_flow
+import workbook_material
+from material_common import IMAGE_VERSION, XLSX_VERSION
 from user_feedback import build as build_user_feedback, overview as feedback_overview, paginate as paginate_feedback, batch_decisions
 from import_checkpoint import Checkpoint
 from snapshot_storage import reuse_original
@@ -341,7 +344,13 @@ def extract_pdf(path: Path) -> tuple[str, str, dict]:
 
 def extraction_usable(item: dict) -> bool:
     """Never keep a legacy/nonempty-only PDF as supposedly validated evidence."""
-    if item.get("source_suffix", Path(str(item.get("source_relative", ""))).suffix).lower() not in ({".pdf"} | IMAGE_SUFFIXES):
+    suffix = item.get("source_suffix", Path(str(item.get("source_relative", ""))).suffix).lower()
+    meta = item.get("extraction") or {}
+    if suffix == ".xlsx":
+        return meta.get("material_version") == XLSX_VERSION and meta.get("complete_text_coverage") is True
+    if suffix in IMAGE_SUFFIXES and meta.get("material_version") == IMAGE_VERSION:
+        return meta.get("complete_text_coverage") is True and bool(meta.get("material_result_id"))
+    if suffix not in ({".pdf"} | IMAGE_SUFFIXES):
         return True
     meta = item.get("extraction") or {}
     return meta.get("extraction_version") == EXTRACTION_VERSION and meta.get("complete_text_coverage") is True
@@ -359,11 +368,15 @@ def extract(path: Path) -> tuple[str, str, dict]:
         if suffix == ".docx":
             return extract_docx(path), "DOCX本地解析", {}
         if suffix == ".xlsx":
-            return extract_xlsx(path), "XLSX本地解析", {}
+            return workbook_material.extract(path)
         if suffix == ".pdf":
             return extract_pdf(path)
         if suffix in IMAGE_SUFFIXES:
-            return extract_image(path)
+            # Host image reading is a direct path, not gated on OCR availability.
+            # An already usable unchanged OCR image can still be reused above.
+            return "", "图片待宿主视觉读取", {"material_version": IMAGE_VERSION,
+                "complete_text_coverage": False, "requires_host_vision": True,
+                "source_kind": "image", "next_action": "material image-prepare"}
     except (OSError, zipfile.BadZipFile, KeyError, ET.ParseError, json.JSONDecodeError) as exc:
         raise KBError(str(exc)) from exc
     raise KBError("不支持的格式")
@@ -650,6 +663,7 @@ def build_plan(
     checkpoint: Checkpoint | None = None,
     review_store: visual_review.Store | None = None,
     classification_input: dict | None = None,
+    material_store: material_flow.Store | None = None,
 ) -> dict:
     """Build a candidate release without mutating the prior effective view."""
     files, raw_issues = scan_files(source_root, budgets["max_files"], budgets["max_file_bytes"], budgets["max_total_bytes"])
@@ -782,7 +796,7 @@ def build_plan(
             leads.append(item)
 
     def preserve_prior(relative: str, prior: dict | None, reason: str, category: str) -> None:
-        if prior and status_bucket(prior.get("状态"), prior.get("qualification")) in {"evidence", "lead"} and extraction_usable(prior) and (review_store is None or review_store.valid_meta(prior.get("extraction") or {}, str(prior.get("sha256")))):
+        if prior and status_bucket(prior.get("状态"), prior.get("qualification")) in {"evidence", "lead"} and extraction_usable(prior) and (review_store is None or review_store.valid_meta(prior.get("extraction") or {}, str(prior.get("sha256")))) and (material_store is None or material_store.valid_meta(prior.get("extraction") or {}, str(prior.get("sha256")))):
             kept = dict(prior)
             kept["source_missing"] = category == "missing"
             kept["last_update_error"] = reason
@@ -900,11 +914,15 @@ def build_plan(
         cached = extractions.get(str((known or {}).get("extraction_id") or "")) or {}
         reusable = (known and known.get("sha256") == digest and extraction_usable(known)
                     and (review_store is None or review_store.valid_meta(known.get("extraction") or {}, digest))
+                    and (material_store is None or material_store.valid_meta(known.get("extraction") or {}, digest))
                     and known.get("extraction_id") and cached.get("extraction_id") == known["extraction_id"]
                     and cached.get("text_sha256") == known.get("extracted_text_sha256")
                     and cached.get("text_sha256") == hashlib.sha256(str(cached.get("text", "")).encode()).hexdigest())
         try:
-            if reusable:
+            material_result = material_store.extraction(path, digest) if material_store and path.suffix.lower() in IMAGE_SUFFIXES else None
+            if material_result:
+                text, method, extraction_meta = material_result
+            elif reusable:
                 text, method, extraction_meta = cached["text"], cached["method"], cached["meta"]
             else:
                 reviewed_raw = review_store.prior_raw(relative, digest, EXTRACTION_VERSION) if review_store else None
@@ -924,6 +942,8 @@ def build_plan(
             pending_visual = extraction_meta.get("visual_review_requests") or []
             message = (f"第{bad_pages}页提取仍待确认；宿主可通过visual-review查看原页并复核，不要把规则无法确认一律当作OCR依赖缺失"
                        if pending_visual else f"第{bad_pages}页文字或图像文字覆盖未核验；请检查具体依赖、读取或质量原因")
+            if extraction_meta.get("requires_host_vision"):
+                message = "图片待Agent直接看图读取：material image-prepare --file <源相对路径>；不需先通过OCR或缩图。没有看图能力时明确告知，保留其它已完成资料。"
             preserve_prior(relative, prior, message, "extraction_quality")
             maintenance[-1]["extraction"] = extraction_meta
             report[-1]["unresolved_pages"] = bad_pages
@@ -949,7 +969,7 @@ def build_plan(
         explicit_classification = {**persisted, **incoming}
         try:
             classified, classification_info, classification_pending = classification.resolve(
-                relative, digest, text, extraction_meta.get("extraction_version", "text-v1"), known, explicit_classification)
+                relative, digest, text, extraction_meta.get("material_version", extraction_meta.get("extraction_version", "text-v1")), known, explicit_classification)
         except ValueError as exc:
             raise KBError(str(exc)) from exc
         # Inferred catalog fields must not override a new content review. Human
@@ -1075,7 +1095,7 @@ def build_plan(
             else:
                 item["confirmation_basis"] = {"code": "legacy_reason_unknown", "reason": "当前为待确认状态，但没有可核实的本人待确认决定或最初自动判断原因；需核对原件和历史记录。"}
         text_sha = hashlib.sha256(text.encode()).hexdigest()
-        extraction_id = hashlib.sha256((digest + "\0" + str(extraction_meta.get("extraction_version", "text-v1")) + "\0" + text_sha).encode()).hexdigest()
+        extraction_id = hashlib.sha256((digest + "\0" + str(extraction_meta.get("material_version", extraction_meta.get("extraction_version", "text-v1"))) + "\0" + text_sha).encode()).hexdigest()
         item["extraction_id"] = extraction_id
         item["extracted_text_sha256"] = text_sha
         item["revision_id"] = "rev-" + digest + "-" + extraction_id[:12]
@@ -1565,6 +1585,11 @@ def restrictive_filter(entries: list[dict], control: dict, *, include_history: b
     kept: list[dict] = []
     records = control.get("decision_overrides") or {}
     for item in entries:
+        if item.get("extraction", {}).get("material_result_id"):
+            review_root = control.get("_material_root")
+            if not review_root or not material_flow.Store(review_root, control["_material_source"]).valid_meta(item["extraction"], str(item.get("sha256"))):
+                stopped.append({"document_id": item.get("document_id"), "file": item.get("source_relative"), "reason": "图片读取结果已撤销或不可验证"})
+                continue
         if item.get("extraction", {}).get("visual_review_decisions"):
             review_root = control.get("_visual_review_root")
             if not review_root or not visual_review.Store(review_root, control["_visual_review_source"]).valid_meta(item["extraction"], str(item.get("sha256"))):
@@ -1619,7 +1644,8 @@ def current_commit(kb_root: Path, config: dict) -> tuple[dict, Path, dict]:
     else:
         control = {"schema": "personal-kb.control.compat-v1", "authorization": dict(config.get("authorization") or {}), "decision_overrides": read_json(release / "decisions.json").get("overrides", {}) if (release / "decisions.json").is_file() else {}}
     control = {**control, "_visual_review_root": str(visual_review.store_path(kb_root)),
-               "_visual_review_source": config["source_root"], "_visual_review_revision": visual_review.revision(kb_root)}
+               "_visual_review_source": config["source_root"], "_visual_review_revision": visual_review.revision(kb_root),
+               "_material_root": str(material_flow.store_path(kb_root)), "_material_source": config["source_root"], "_material_revision": material_flow.revision(kb_root)}
     return pointer, release, control
 
 
@@ -1740,11 +1766,12 @@ def establish(args: argparse.Namespace) -> None:
     checkpoint = None
     if args.apply:
         check_import_disk(source, budgets, home)
-        checkpoint = Checkpoint(home / "import-checkpoints" / initial_identity["token"], EXTRACTION_VERSION + "-checkpoint-v1")
+        checkpoint = Checkpoint(home / "import-checkpoints" / initial_identity["token"], EXTRACTION_VERSION + "-" + IMAGE_VERSION + "-" + XLSX_VERSION + "-checkpoint-v1")
     kb_id = slug(args.name) + "-" + uuid.uuid4().hex[:8]
     kb_root = home / "kbs" / kb_id
     review_store = visual_review.Store(visual_review.store_path(kb_root), source) if args.apply else None
-    plan = build_plan(source, None, decisions, budgets, checkpoint=checkpoint, review_store=review_store, classification_input=classification_flow.load_input(sys.modules[__name__], args))
+    material_store = material_flow.Store(material_flow.store_path(kb_root), source) if args.apply else None
+    plan = build_plan(source, None, decisions, budgets, checkpoint=checkpoint, review_store=review_store, material_store=material_store, classification_input=classification_flow.load_input(sys.modules[__name__], args))
     if source_identity(source)["token"] != initial_identity["token"]:
         raise KBError("资料文件夹在预检过程中发生变化；结果未应用")
     preview = {
@@ -1779,7 +1806,7 @@ def establish(args: argparse.Namespace) -> None:
                 raise KBError("建立前资料文件夹身份已变化；候选未激活")
             # The apply transaction repeats the scan under its write lock; the
             # preview itself remains read-only and cannot silently become stale.
-            plan = build_plan(source, None, decisions, budgets, checkpoint=checkpoint, review_store=review_store, classification_input=classification_flow.load_input(sys.modules[__name__], args))
+            plan = build_plan(source, None, decisions, budgets, checkpoint=checkpoint, review_store=review_store, material_store=material_store, classification_input=classification_flow.load_input(sys.modules[__name__], args))
             failure_stage = args.simulate_failure_stage
             release_id, release = write_release(kb_root, plan, None, args.simulate_failure_before_activate or failure_stage == "after_candidate_write")
             ok, errors = validate_release(release)
@@ -1892,8 +1919,9 @@ def update(args: argparse.Namespace) -> None:
             decisions,
             budgets,
             migration_from_v1=migration_from_v1,
-            checkpoint=Checkpoint(root / "import-checkpoints", EXTRACTION_VERSION + "-checkpoint-v1"),
+            checkpoint=Checkpoint(root / "import-checkpoints", EXTRACTION_VERSION + "-" + IMAGE_VERSION + "-" + XLSX_VERSION + "-checkpoint-v1"),
             review_store=visual_review.Store(visual_review.store_path(root), source),
+            material_store=material_flow.Store(material_flow.store_path(root), source),
             classification_input=classification_flow.load_input(sys.modules[__name__], args),
         )
         timings["scan_extraction_and_plan_seconds"] = round(time.perf_counter() - phase_start, 6)
@@ -2810,6 +2838,7 @@ def parser() -> argparse.ArgumentParser:
     platform_parser.set_defaults(function=platform_check)
     classification_flow.register(sub, sys.modules[__name__])
     visual_review.register(sub, sys.modules[__name__])
+    material_flow.register(sub, sys.modules[__name__])
     return result
 
 

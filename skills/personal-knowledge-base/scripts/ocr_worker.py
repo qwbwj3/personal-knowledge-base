@@ -15,6 +15,11 @@ MAX_PIXELS = 8_000_000
 MAX_SIDE = 4096
 
 
+class ImageInputLimitError(ValueError):
+    """Unsupported input size, not a broken model installation."""
+
+
+
 def deny_network(*args, **kwargs):
     raise RuntimeError('Network/download disabled during OCR; run ocr_runtime.py prepare explicitly')
 
@@ -104,7 +109,7 @@ def load_image(path):
     # rather than decoding huge buffers then pretending the pixel cap protected memory.
     with Image.open(path) as source:
         if source.width * source.height > MAX_PIXELS or max(source.size) > MAX_SIDE:
-            raise RuntimeError(f'Image exceeds {MAX_PIXELS} pixels or {MAX_SIDE}px side; resize locally first')
+            raise ImageInputLimitError('image_input_limit_exceeded')
         image = ImageOps.exif_transpose(source).convert('RGB')
         pixels = np.array(image)[:, :, ::-1].copy()
     return pixels, {'coordinate_space': 'exif_oriented_image_pixels',
@@ -152,10 +157,11 @@ def run(args):
                     if textpage.count_chars() > 200000:
                         raise ValueError('Native PDF page text limit exceeded')
                     return {'reader': 'pdfium-runtime', 'text': textpage.get_text_range()}
-    ocr = engine(args.home, facade)
     if args.command == 'self-check':
-        return self_check(ocr)
+        return self_check(engine(args.home, facade))
+    # Inspect input limits before loading model sessions.
     pixels, coordinates = load_pdf(args.path, args.page_index) if args.command == 'pdf-page' else load_image(args.path)
+    ocr = engine(args.home, facade)
     result = ocr(pixels)
     lines = []
     if result.txts is not None:
@@ -190,6 +196,11 @@ def main():
             result = run(args)
         print(json.dumps(result, ensure_ascii=False, allow_nan=False))
         return 0
+    except ImageInputLimitError:
+        print(json.dumps({'status': 'blocked', 'code': 'image_input_limit_exceeded',
+                          'max_pixels': MAX_PIXELS, 'max_side': MAX_SIDE,
+                          'repair_required': False}))
+        return 2
     except Exception as exc:
         print(f'{type(exc).__name__}: {exc}\nSetup: python ocr_runtime.py prepare --home "{args.home}"', file=sys.stderr)
         return 2
