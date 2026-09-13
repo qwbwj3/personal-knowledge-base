@@ -19,6 +19,12 @@
 
 **产品条款用来核对事实，个人笔记和历史文案用来提供经验与表达参考。** 两类资料可以一起使用，但不会把个人解读当成正式产品规定。
 
+## 格式支持不是仅PDF
+
+目前可读PDF、DOCX、XLSX、CSV、Markdown、文本、HTML及PNG/JPEG/WebP的本地OCR。DOCX/XLSX为基础文字和值提取，复杂表格、图片、公式计算和显示格式不保证；PPT/PPTX及旧DOC/XLS还没有原生入口。[完整能力与限制](skills/personal-knowledge-base/references/supported-formats.md)。
+
+本分支是工作坊修复PR候选，尚未合并/发布。不要将下方当前稳定标签安装示例误认为本分支已发布。
+
 ## 开始使用
 
 ### 1. 安装到 WorkBuddy

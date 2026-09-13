@@ -1,10 +1,15 @@
 {
   "schema": "personal-kb.release-inventory.v1",
-  "version": "1.2.1",
+  "version": "1.2.2-rc.1",
   "files": {
     ".gitattributes": {
       "sha256": "57a25c7bbdb6cbd7644d7dd9a686e524d55ffa9c293ba6c0eb5881a4b79ed9bd",
       "bytes": 153,
+      "executable": false
+    },
+    ".github/workflows/workshop-check.yml": {
+      "sha256": "a4882bb505e63afdb5487de187a5c9593c9985b56769dd94e3a2c496139ae3a9",
+      "bytes": 1100,
       "executable": false
     },
     ".gitignore": {
@@ -28,13 +33,13 @@
       "executable": false
     },
     "README.md": {
-      "sha256": "f68612f2aff12e4bdee8e6b7c82f9e36e2cb4362c70d662c3226c7491ffc6582",
-      "bytes": 5865,
+      "sha256": "541fa7b4f70a1e0482429ad1a94fbfb706b59bc2867e865ec1049f0915186e39",
+      "bytes": 6363,
       "executable": false
     },
     "RELEASE-NOTES.md": {
-      "sha256": "aba128899f14b6100d4b8c92ab8006e4659be7a8587e122e3f1cb79ccdc009b4",
-      "bytes": 1822,
+      "sha256": "ac222b06a2971bf936cbbd77ae0178d492f546c2557fcfde49edbffcf025a232",
+      "bytes": 2604,
       "executable": false
     },
     "SECURITY.md": {
@@ -48,13 +53,13 @@
       "executable": false
     },
     "skills/personal-knowledge-base/PACKAGE.json": {
-      "sha256": "af71d757beae2ebcee05441fb84f6e4b6b14fd0060f529601e971cc24209e03d",
-      "bytes": 3356,
+      "sha256": "63afe817b00389c6565203ffe6275c8f31092cfe4558d0395239d90900378937",
+      "bytes": 3491,
       "executable": false
     },
     "skills/personal-knowledge-base/SKILL.md": {
-      "sha256": "6ee3dcd59d1ca75dc380426cfa8a3c85b30da0e21b627236b7d9179b69261a61",
-      "bytes": 32635,
+      "sha256": "88a6c5556e7b5209ec08da222dfe46c2c5d938610ac76392f417c9aa9475c976",
+      "bytes": 34341,
       "executable": false
     },
     "skills/personal-knowledge-base/agents/openai.yaml": {
@@ -127,9 +132,14 @@
       "bytes": 3753,
       "executable": false
     },
+    "skills/personal-knowledge-base/references/supported-formats.md": {
+      "sha256": "33f7f38c8ba494b9a2d9cb4b95962d0468c22c0d9640354b756a5af717ab1a07",
+      "bytes": 3315,
+      "executable": false
+    },
     "skills/personal-knowledge-base/references/visual-review.md": {
-      "sha256": "8a13bf76cfd0ea96c2f9e1fcc523a2268f5ec587731fc1eea1ef51b2b023a7ec",
-      "bytes": 7205,
+      "sha256": "231cace9a626c1e80a2f0f6325e958ac31e5d5645e4b49967ce0ce0eaa2299ea",
+      "bytes": 9380,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/apply_chinese_graph.py": {
@@ -218,13 +228,13 @@
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/ocr_runtime.py": {
-      "sha256": "214ad028d3a14eb0b9c0a9ad3076747d7a05b4c5ae8d11b0e354ffd494de04be",
-      "bytes": 17984,
+      "sha256": "a4122b1ed0a75bb633f74964cfa2d60226172427ccb568195e031ed7759867da",
+      "bytes": 18849,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/ocr_worker.py": {
-      "sha256": "8d8a8377c464ea2c2ed8f47980caae5e83e054f505e008528116087074d4e78a",
-      "bytes": 9191,
+      "sha256": "94037eb6c2cbca94735323806bff9cd7cfec9972c9e6b366eb44878ad4d7cf7e",
+      "bytes": 9601,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/operation_guard.py": {
@@ -313,8 +323,13 @@
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/visual_review.py": {
-      "sha256": "06342e3f2d3f0bdd9a71653c54eaaad6a6b56cc7ad843c6653c7e462460d0edc",
-      "bytes": 27849,
+      "sha256": "f3badf1b065e63aaecc0a0e20f75c22978b4d22e49022d8ee4cd561592492b17",
+      "bytes": 29665,
+      "executable": false
+    },
+    "skills/personal-knowledge-base/scripts/visual_review_queue.py": {
+      "sha256": "70a31d07e47e3830866e5ec4a7e18535bdc6d722a92a3a80d5dfb0c678f2d038",
+      "bytes": 5142,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/visual_review_worker.py": {
@@ -616,6 +631,11 @@
       "sha256": "94fb443e4b20dac05298a80d9e5aec538c51c257b9ee9a8b290b91ce9a6f3322",
       "bytes": 258,
       "executable": true
+    },
+    "tests/test_workshop.py": {
+      "sha256": "d0bb619e1687b8d55be2c5fa7d6daa2a30e20454c941ffa47eace2266dab557e",
+      "bytes": 18333,
+      "executable": false
     },
     "tools/verify_release.py": {
       "sha256": "1f709c47fdf5d076274ddd4e29d7dd25262d5b51dff1cf59baa49d6ea80d15d3",
