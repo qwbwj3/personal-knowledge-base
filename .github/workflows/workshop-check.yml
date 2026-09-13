@@ -20,14 +20,17 @@ jobs:
         run: |
           import os, subprocess, zipfile
           from pathlib import Path
-          subprocess.run(['python','-B','tools/verify_release.py'],check=True)
           out=Path(os.environ['RUNNER_TEMP'])/'workshop-source.zip'
           files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
           with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED) as z:
               for name in files:
                   if name and not name.startswith('.github/'):
                       z.write(name,name)
-      - uses: actions/upload-artifact@v4
+          exported=Path(os.environ['RUNNER_TEMP'])/'public-release'
+          with zipfile.ZipFile(out) as z:
+              z.extractall(exported)
+          subprocess.run(['python','-B',str(exported/'tools/verify_release.py')],cwd=exported,check=True)
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: workshop-public-source
           path: ${{ runner.temp }}/workshop-source.zip
