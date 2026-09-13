@@ -1,39 +1,53 @@
-name: Workshop regression
+name: Materialize reviewed workshop source
 on:
   push:
     branches: [fix/workshop-review-queue-20260913]
 permissions:
-  contents: read
+  contents: write
 jobs:
-  validate:
+  prepare:
+    if: contains(github.event.head_commit.message, '[workshop-source-transfer]')
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONIOENCODING: utf-8
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
-          persist-credentials: false
+          fetch-depth: 0
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.13'
-      - name: Check public release and export source only
+      - name: Apply hash-bound source, verify, and publish only to the repair branch
         shell: python
         run: |
-          import os, subprocess, zipfile
+          import hashlib, os, subprocess
           from pathlib import Path
-          out=Path(os.environ['RUNNER_TEMP'])/'workshop-source.zip'
-          files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
-          with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED) as z:
-              for name in files:
-                  if name and not name.startswith('.github/'):
-                      z.write(name,name)
-          exported=Path(os.environ['RUNNER_TEMP'])/'public-release'
-          with zipfile.ZipFile(out) as z:
-              z.extractall(exported)
-              for info in z.infolist():
-                  (exported/info.filename).chmod((info.external_attr>>16)&0o777)
-          subprocess.run(['python','-B',str(exported/'tools/verify_release.py')],cwd=exported,check=True)
-      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: workshop-public-source
-          path: ${{ runner.temp }}/workshop-source.zip
-          retention-days: 1
+          branch='fix/workshop-review-queue-20260913'
+          assert os.environ['GITHUB_REPOSITORY']=='qwbwj3/personal-knowledge-base'
+          assert os.environ['GITHUB_REF']=='refs/heads/'+branch
+          def git(*args):
+              return subprocess.check_output(['git',*args],text=True).strip()
+          assert git('rev-parse','HEAD')==os.environ['GITHUB_SHA']
+          patch=Path('.workshop-transfer/source.patch').read_bytes()
+          # Canonicalize one transport-only leading blank before a diff header.
+          patch=patch.replace(b'\n diff --git a/RELEASE-MANIFEST.json',b'\ndiff --git a/RELEASE-MANIFEST.json')
+          assert hashlib.sha256(patch).hexdigest()=='3e23e843cbffe7d3b5e9be15530a6086fe9662f876c88e50496ddad924d7c58a'
+          subprocess.run(['git','apply','--check','-'],input=patch,check=True)
+          subprocess.run(['git','apply','-'],input=patch,check=True)
+          final=Path('.workshop-transfer/final-workflow.yml').read_bytes()
+          assert hashlib.sha256(final).hexdigest()=='a4882bb505e63afdb5487de187a5c9593c9985b56769dd94e3a2c496139ae3a9'
+          Path('.github/workflows/workshop-check.yml').write_bytes(final)
+          for name in ('source.patch','final-workflow.yml'):
+              Path('.workshop-transfer',name).unlink()
+          Path('.workshop-transfer').rmdir()
+          subprocess.run(['python','-B','tools/verify_release.py'],check=True)
+          subprocess.run(['python','-B','-m','unittest','discover','-s','tests','-v'],check=True)
+          assert git('ls-remote','origin','refs/heads/'+branch).split()[0]==os.environ['GITHUB_SHA']
+          git('config','user.name','github-actions[bot]')
+          git('config','user.email','41898282+github-actions[bot]@users.noreply.github.com')
+          git('add','-A')
+          git('commit','-m','fix: current visual queue, safe decision inputs and honest format boundaries')
+          print('WORKSHOP_TESTED_COMMIT='+git('rev-parse','HEAD'),flush=True)
+          subprocess.run(['git','push','origin','HEAD:refs/heads/'+branch],check=True)
