@@ -1,6 +1,6 @@
 {
   "schema": "personal-kb.release-inventory.v1",
-  "version": "1.3.0-rc.2",
+  "version": "1.3.0",
   "files": {
     ".gitattributes": {
       "sha256": "57a25c7bbdb6cbd7644d7dd9a686e524d55ffa9c293ba6c0eb5881a4b79ed9bd",
@@ -8,13 +8,8 @@
       "executable": false
     },
     ".github/workflows/material-check.yml": {
-      "sha256": "8c2888d4b0278069d6176590533ef6e7d3e56fad581e3f33fd4044009ad644d2",
-      "bytes": 1462,
-      "executable": false
-    },
-    ".github/workflows/workshop-check.yml": {
-      "sha256": "a4882bb505e63afdb5487de187a5c9593c9985b56769dd94e3a2c496139ae3a9",
-      "bytes": 1100,
+      "sha256": "815ae8f83f25115d0d7f84c9561c80b995386f74a939f744724a658b54596560",
+      "bytes": 1496,
       "executable": false
     },
     ".gitignore": {
@@ -23,8 +18,8 @@
       "executable": false
     },
     "FINAL-ACCEPTANCE.md": {
-      "sha256": "b26c00eef6e70b742b00575fbc5d47de3361484c82c0ac5d7e049c7fa15813a1",
-      "bytes": 3181,
+      "sha256": "969769ab069a2ad24937e6e071a91856e48fe3e77462959475ddc8b36dfb097d",
+      "bytes": 3365,
       "executable": false
     },
     "PUBLICATION-AUDIT.json": {
@@ -33,8 +28,8 @@
       "executable": false
     },
     "PUBLICATION.md": {
-      "sha256": "266968963cb2ce9387e4b73bc3576ebed609efd642a9b0bebed1b7bcdcbeaca5",
-      "bytes": 1275,
+      "sha256": "6dcde233bd4847f116e6678c20f39de75f565ff2237ca19f6ba0ec3f666e1b23",
+      "bytes": 1431,
       "executable": false
     },
     "README.md": {
@@ -43,8 +38,8 @@
       "executable": false
     },
     "RELEASE-NOTES.md": {
-      "sha256": "ac222b06a2971bf936cbbd77ae0178d492f546c2557fcfde49edbffcf025a232",
-      "bytes": 2604,
+      "sha256": "cea5075fe1799f689a07c8c0adfbf83ac654b2415005d5809d52cb4cfe2142b4",
+      "bytes": 3409,
       "executable": false
     },
     "SECURITY.md": {
@@ -58,8 +53,8 @@
       "executable": false
     },
     "docs/MULTIFORMAT-DEVELOPMENT.md": {
-      "sha256": "b5c587659736c01b268b71af07ac6724af9fda450964a26167239818847b8463",
-      "bytes": 10966,
+      "sha256": "50a1ddd73016c50163c2122417a3cd1cea87cd2d7eea2566b239eecc22ef6870",
+      "bytes": 11231,
       "executable": false
     },
     "docs/MULTIFORMAT-RESULTS.json": {
@@ -67,9 +62,14 @@
       "bytes": 6371,
       "executable": false
     },
+    "docs/RELEASE-1.3.0-ACCEPTANCE.md": {
+      "sha256": "723fd6764768da37780b04df84481419a175fdf057d92255c1cbb9571ccb6fb0",
+      "bytes": 2274,
+      "executable": false
+    },
     "skills/personal-knowledge-base/PACKAGE.json": {
-      "sha256": "879c3836373dde39de8ce3caa33961170d5ba48f448b98acbb86aa2be090f318",
-      "bytes": 3633,
+      "sha256": "72421d4ef37e72ee6986c29be6b4429de7fc394ec18f8a7f7251acb4b76b768b",
+      "bytes": 3601,
       "executable": false
     },
     "skills/personal-knowledge-base/SKILL.md": {

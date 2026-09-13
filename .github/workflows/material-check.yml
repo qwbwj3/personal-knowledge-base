@@ -1,7 +1,7 @@
-name: Image and spreadsheet regression
+name: Knowledge base integrated regression
 on:
   push:
-    branches: [feat/agent-image-spreadsheet-20260913]
+    branches: [main, integrate/workshop-multiformat-20260913]
   pull_request:
     branches: [main]
 permissions:
@@ -34,7 +34,7 @@ jobs:
         run: python -m pip install --disable-pip-version-check Pillow==12.3.0 pypdf==5.9.0
       - name: Verify exact inventory
         run: python -B tools/verify_release.py
-      - name: Synthetic image and workbook contracts
+      - name: Integrated workshop, material and classification regressions
         run: python -B -m unittest discover -s tests -v
       - name: Check unchanged checkout
         shell: python

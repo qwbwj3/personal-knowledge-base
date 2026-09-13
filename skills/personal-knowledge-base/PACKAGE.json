@@ -1,7 +1,7 @@
 {
   "schema": "personal-kb.package.v1",
   "name": "personal-knowledge-base",
-  "version": "1.3.0-rc.2",
+  "version": "1.3.0",
   "host": "workbuddy",
   "workbuddy_skill_root": "~/.codebuddy/skills",
   "base": {
@@ -76,7 +76,7 @@
   ],
   "platform": "Local desktop runtime; verify host capabilities and final user acceptance on the target environment",
   "built_at": "2026-09-13",
-  "status": "integrated-release-candidate-under-validation",
+  "status": "integrated-release",
   "legacy_contract_features": [
     "product-alias-and-year-resolution",
     "claim-by-claim-review",
