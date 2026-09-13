@@ -173,8 +173,8 @@
       "executable": true
     },
     "skills/personal-knowledge-base/scripts/classification_flow.py": {
-      "sha256": "c30d1e8b3f29cf8bbfc898108479aee9456456c5cb1e94cd01a124b83e4649f3",
-      "bytes": 24121,
+      "sha256": "32a2673db10a9932837ab811f26dfc2e8ddc3576a16ee95ca60ae568711f5337",
+      "bytes": 24161,
       "executable": false
     },
     "skills/personal-knowledge-base/scripts/configure_scope.py": {
@@ -676,6 +676,11 @@
       "sha256": "94fb443e4b20dac05298a80d9e5aec538c51c257b9ee9a8b290b91ce9a6f3322",
       "bytes": 258,
       "executable": true
+    },
+    "tests/test_classification_materials.py": {
+      "sha256": "d192abd1cc94f2ec263d2206594c10ae2c15de6496dbaa676fa0d8710bf4e956",
+      "bytes": 4390,
+      "executable": false
     },
     "tests/test_image_release.py": {
       "sha256": "433b78f9efac5087a56b2845b9b4613cc749001d8c601bc249b349e242f82d0b",

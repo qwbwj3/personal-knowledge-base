@@ -322,7 +322,7 @@ def command(api, args):
                 end = min(len(text), args.start + args.chars)
                 scope = session.scope(args.source, item['sha256'])
                 result = {'status': 'classification_content', 'source_relative': args.source, 'source_sha256': item['sha256'],
-                          'text_sha256': text_hash(text), 'extraction_version': cached['meta'].get('extraction_version', 'text-v1'),
+                          'text_sha256': text_hash(text), 'extraction_version': cached['meta'].get('material_version', cached['meta'].get('extraction_version', 'text-v1')),
                           'scope_id': (scope or {}).get('scope_id'), 'user_scope': scope,
                           'start': args.start, 'end': end, 'total_characters': len(text), 'text': text[args.start:end],
                           'complete': end == len(text), 'next_start': end if end < len(text) else None,
