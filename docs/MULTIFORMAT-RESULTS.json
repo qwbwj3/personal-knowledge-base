@@ -1,0 +1,190 @@
+{
+  "schema": "personal-kb.multiformat-development-evidence.v1",
+  "previous_session": {
+    "branch": "feat/agent-image-spreadsheet-20260913",
+    "commit": "632945cfe6a2ff37f12b63e1fbce9ce1f5affc2d",
+    "scope": "design only; no implementation or new PR"
+  },
+  "local_synthetic_regression": {
+    "os": "Linux",
+    "python": "3.13.5",
+    "executed": 38,
+    "passed": 38,
+    "failed_records": 0,
+    "error_records": 0,
+    "skipped": 0,
+    "elapsed_seconds": 7.187,
+    "scope": "real synthetic OOXML/Pillow and KB maintenance; image-reading decisions and external-host execution receipts are explicit test doubles, not model accuracy evidence"
+  },
+  "actual_calculation_engine": {
+    "engine": "artifact_tool",
+    "not_a_mock": true,
+    "source": "synthetic XLSX with deliberately stale F2 cached value of 1",
+    "literal_input": {
+      "sheet": "计划",
+      "cell": "A2",
+      "value": 200
+    },
+    "formula_cases": [
+      "A2*Data!A1",
+      "SUM(A2,Data!A1)",
+      "IF(A2>100,F2,0)"
+    ],
+    "result": {
+      "status": "calculated",
+      "engine": "artifact_tool",
+      "executed": true,
+      "execution_evidence": "import_xlsx -> set literal inputs -> recalculate -> read output cells",
+      "executed_at": "2026-09-13T13:30:56Z",
+      "outputs": [
+        {
+          "sheet": "计划",
+          "cell": "F2",
+          "value": 600
+        },
+        {
+          "sheet": "计划",
+          "cell": "G2",
+          "value": 203
+        },
+        {
+          "sheet": "Data",
+          "cell": "A1",
+          "value": 3
+        }
+      ],
+      "source_unchanged": true,
+      "evidence_scope": "direct_local_engine_execution_not_semantic_validation"
+    },
+    "conditional_result": {
+      "status": "calculated",
+      "engine": "artifact_tool",
+      "executed": true,
+      "execution_evidence": "import_xlsx -> set literal inputs -> recalculate -> read output cells",
+      "executed_at": "2026-09-13T13:38:31Z",
+      "outputs": [
+        {
+          "sheet": "计划",
+          "cell": "F2",
+          "value": 600
+        },
+        {
+          "sheet": "计划",
+          "cell": "G2",
+          "value": 203
+        },
+        {
+          "sheet": "计划",
+          "cell": "H2",
+          "value": 600
+        }
+      ],
+      "source_unchanged": true,
+      "evidence_scope": "direct_local_engine_execution_not_semantic_validation"
+    },
+    "error_result": {
+      "status": "calculation_incomplete",
+      "engine": "artifact_tool",
+      "executed": true,
+      "error_code": "formula_error",
+      "output": {
+        "sheet": "计划",
+        "cell": "C3"
+      },
+      "value": "#DIV/0!"
+    },
+    "owned_worker_result": {
+      "status": "calculated",
+      "engine": "artifact_tool",
+      "executed": true,
+      "execution_evidence": "import_xlsx -> set literal inputs -> recalculate -> read output cells",
+      "executed_at": "2026-09-13T13:32:43Z",
+      "outputs": [
+        {
+          "cell": "F2",
+          "sheet": "计划",
+          "value": 600
+        },
+        {
+          "cell": "G2",
+          "sheet": "计划",
+          "value": 203
+        },
+        {
+          "cell": "A1",
+          "sheet": "Data",
+          "value": 3
+        }
+      ],
+      "source_unchanged": true,
+      "evidence_scope": "direct_local_engine_execution_not_semantic_validation",
+      "process_control": {
+        "scope": "posix_process_group",
+        "group_signal_delivered": true,
+        "root_exit_confirmed": true,
+        "cleanup_confirmed": null,
+        "cleanup_scope": "owned_process_execution",
+        "file_resources_released": null,
+        "note": "POSIX group signalling is not a Windows Job active-process census."
+      }
+    },
+    "owned_worker_elapsed_seconds": 21.373,
+    "cold_start_note": "Initial default 5-second engine startup failed; bounded 25-second startup inside worker passed. No formula or quality gate was relaxed."
+  },
+  "authorized_local_image_preparation": {
+    "samples": 1,
+    "width": 3240,
+    "height": 6774,
+    "regions": 8,
+    "all_region_pixels_match_original": true,
+    "source_unchanged": true,
+    "ocr_executed": false,
+    "host_visual_reading_tested": false,
+    "full_ingestion_tested": false,
+    "elapsed_seconds": 5.241,
+    "previous_20_image_batch": "development command stopped at 45s; incomplete, not counted as 20-image pass; no remaining process"
+  },
+  "workbuddy_executed": false,
+  "new_real_ocr_inference": false,
+  "uploaded_real_materials": false,
+  "formal_install_changed": false,
+  "merged_or_released": false,
+  "full_excel_function_coverage": false,
+  "limitations": [
+    "artifact_tool is optional host-provided capability, not a public dependency assumed available in WorkBuddy",
+    "External host result validation checks identity and completeness, not whether the host truly executed the claimed engine",
+    "Formula/drawing/macro/connection limitations are explicit; no macros or remote data refresh",
+    "Real screenshot model transcription accuracy and WorkBuddy end-to-end use remain unverified",
+    "PR #1 workshop queue corrections remain separate and unmerged"
+  ],
+  "source_commit": "69b23f78b66f26205eb43719c8d50e61b6b38b5c",
+  "windows_validation": {
+    "run_id": 34761072530,
+    "job_id": 103733893984,
+    "artifact_id": 10319315776,
+    "artifact_zip_sha256": "6d951147cd1a3dca5b10efbb92a73b212d365b71ffaec60ae05642c65cc50247",
+    "raw_report_sha256": "8849b1df8a42770b784fc549f5f85d9b1b5c2ffdab26a6581dfff9faba3e6fa4",
+    "result": {
+      "source_commit": "69b23f78b66f26205eb43719c8d50e61b6b38b5c",
+      "os": "Windows-2022Server-10.0.20348-SP0",
+      "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+      "expected": 38,
+      "executed": 38,
+      "exit_code": 0,
+      "inventory_verified": true,
+      "failed_records": 0,
+      "error_records": 0,
+      "skip_records": 0,
+      "elapsed_seconds": 5.718,
+      "actual_engine_calculation_tested": false,
+      "actual_multimodal_model_tested": false,
+      "real_business_materials": false,
+      "checkout_unchanged": true,
+      "success": true
+    }
+  },
+  "earlier_pipeline_failure": {
+    "run_id": 34761012539,
+    "reason": "Unicode Git filenames were quoted during inventory generation; tests did not start. Fixed NUL-delimited parsing; no source/assertion change."
+  }
+}
