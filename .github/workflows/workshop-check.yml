@@ -29,6 +29,8 @@ jobs:
           exported=Path(os.environ['RUNNER_TEMP'])/'public-release'
           with zipfile.ZipFile(out) as z:
               z.extractall(exported)
+              for info in z.infolist():
+                  (exported/info.filename).chmod((info.external_attr>>16)&0o777)
           subprocess.run(['python','-B',str(exported/'tools/verify_release.py')],cwd=exported,check=True)
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
